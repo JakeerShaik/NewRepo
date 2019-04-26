@@ -1,0 +1,274 @@
+<style>
+
+
+
+    /* /// Custom Select ///////// */
+/* select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(./assets/images/dropdown.png) 96% / 15% no-repeat;
+
+} */
+
+/* CAUTION: IE hackery ahead */
+/* select::-ms-expand { 
+    display: none;
+} */
+
+/* target Internet Explorer 9 to undo the custom arrow */
+/* @media screen and (min-width:0\0) {
+    select {
+        background:none\9;
+        padding: 5px\9;
+    } 
+} */
+</style>
+<app-header></app-header>
+
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+    </div>
+    <div class="col-lg-9">
+        <div class="col-lg-9 text-center">
+           
+            <h5 class="title-color">Upload Image (JPEG, JPG, PNG), PDF and not more than 10 MB</h5>
+            <p>&nbsp;</p>
+        </div>
+        <form [formGroup]='shareholder_doc' (ngSubmit)="saveAllDoc()">
+            <div class="row">
+                <p>&nbsp;</p>
+                <div class="col-lg-12">
+                    <alert></alert>
+                    <div class="col-lg-6"><label>Company's Trade License<span class="error-astrix"> *</span></label></div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="companyTradeLicense" class="custom-input">
+                                <input (change)="onFileChanged($event,'companyTradeLicense')" formControlName="companyTradeLicense"
+                                    id="companyTradeLicense" type="file" accept=".png, .pdf, .jpg, .jpeg" />
+                                <img src="./assets/images/tick.png" style="height: 25px; width:25px; margin-left: 55px;" *ngIf="trad" />
+
+                            </label>
+
+                            <div *ngIf=" (companyTradeLicense.dirty || companyTradeLicense.touched || isSubmitted) && companyTradeLicense.invalid">
+                                <div class="error-msg" *ngIf="companyTradeLicense.errors.required">Select Company's
+                                    Trade License</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6"><label>Memorandum of Association<span class="error-astrix"> *</span></label></div>
+                    <div class="col-lg-3">
+
+                        <div class="form-group">
+                            <label class="custom-input" for="memorandumOfAssociation">
+                                <input (change)="onFileChanged($event,'moa')" formControlName="memorandumOfAssociation"
+                                    id="memorandumOfAssociation" type="file" accept=".png, .pdf, .jpg, .jpeg"  />
+                                <img src="./assets/images/tick.png" style="height: 25px; width:25px; margin-left: 55px;" *ngIf="memo" />
+
+                            </label>
+                            <div *ngIf=" (memorandumOfAssociation.dirty || memorandumOfAssociation.touched || isSubmitted) && memorandumOfAssociation.invalid">
+                                <div class="error-msg" *ngIf="memorandumOfAssociation.errors.required">Select
+                                    Memorandum of Association</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6"><Label>Power of Attorney/Board resolution<span class="error-astrix">
+                                *</span></Label></div>
+                    <div class="col-lg-3">
+
+                        <div class="form-group">
+                            <label class="custom-input" for="powerOfAttroney">
+                                <input (change)="onFileChanged($event,'poa')" formControlName="powerOfAttroney" id="powerOfAttroney"
+                                    type="file" accept=".png, .pdf, .jpg, .jpeg" />
+                                <img src="./assets/images/tick.png" style="height: 25px; width:25px; margin-left: 55px;" *ngIf="power" />
+
+                            </label>
+                            <div *ngIf=" (powerOfAttroney.dirty || powerOfAttroney.touched || isSubmitted) && powerOfAttroney.invalid">
+                                <div class="error-msg" *ngIf="powerOfAttroney.errors.required">Select Power of Attorney</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- <div class="col-lg-12">
+                        <div class="col-lg-9"><Label>Board resolution</Label></div>
+                        <div class="col-lg-3">
+                         
+                            <div class="form-group">
+                                  
+                                        <input formControlName="powerOfAttroney" id="powerOfAttroney" type="file" accept=".png, .pdf, .jpg, .jpeg" class="form-control" />
+                           
+                                    <div *ngIf=" (powerOfAttroney.dirty || powerOfAttroney.touched || isSubmitted) && powerOfAttroney.invalid">
+                                        <div class="error-msg" *ngIf="powerOfAttroney.errors.required">Select Emirates ID</div>
+                                    </div>
+                                </div>
+                        </div>
+    
+                    </div> -->
+
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <h2 class="title-color">Tell us more about your company</h2>
+                    </div>
+                </div>
+            </div>
+            <p> &nbsp;</p>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2">No: of Shareholders.</div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <select class="form-control" formControlName="noOfShareholders" (change)="addItem($event.target.value)">
+                            <option value="1" selected>01</option>
+                            <option value="2">02</option>
+                            <option value="3">03</option>
+                            <option value="4">04</option>
+                            <option value="5">05</option>
+                            <option value="6">06</option>
+                            <option value="7">07</option>
+                            <option value="8">08</option>
+                            <option value="9">09</option>
+                            <option value="10">10</option>
+                        </select>
+                        <div *ngIf=" (noOfShareholders.dirty || noOfShareholders.touched || isSubmitted) && noOfShareholders.invalid">
+                                <div class="error-msg" *ngIf="noOfShareholders.errors.required">Select Number of Shareholder</div>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-5"></div>
+            </div>
+            <p>&nbsp;</p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12">
+                            <div class="col-lg-2 text-center" style="margin-bottom: 50px;"></div>
+                        <div class="col-lg-2"><label>Nationality <span class="error-astrix"> *</span></label></div>
+                    <div class="col-lg-2"><label>Emirates ID <span class="error-astrix"> *</span></label></div>
+                    <div class="col-lg-2"><label>Passport <span class="error-astrix"> *</span></label></div>
+                    <div class="col-lg-2"><label>Visa</label></div>
+                    
+                </div>
+                    <div formArrayName="items" *ngFor="let item of shareholder_doc.get('items')['controls']; let i = index;">
+                        <div [formGroupName]="i">
+                            <div class="row">
+                                <!-- <div class="col-lg-1"></div> -->
+
+                                <div class="col-lg-2">
+                                    <h5>Shareholder &nbsp;{{i+1}}</h5>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <select formControlName="nation" class="form-control" [attr.id]="'nat'+i" (change)="visaRequired(i)">
+                                            <option value="">Nationality </option>
+                                            <option *ngFor="let countryLists of country" [value]="countryLists.code3">{{countryLists.name}}</option>
+                                        </select>
+                                        <div *ngIf=" (item.controls.nation.dirty || item.controls.nation.touched ||isSubmitted) && item.controls.nation.invalid">
+                                            <div class="error-msg" *ngIf="item.controls.nation.errors.required">Select Nationality</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label class="custom-input" >
+                                            <input type="file" formControlName="eid" (change)="onFileChangedshare($event,'eid',i,'2')">
+                                <img src="./assets/images/tick.png" style="height: 25px; width:25px; margin-left: 55px;" *ngIf="showEid.includes(i)" [attr.id]="'eid'+i" />
+                                        </label>
+                                                <div *ngIf=" (item.controls.eid.dirty || item.controls.eid.touched || isSubmitted) && item.controls.eid.invalid">
+                                                    <div class="error-msg" *ngIf="item.controls.eid.errors.required">Upload EID</div>
+                                                </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label class="custom-input">
+                                            <input formControlName="passport"  type="file"
+                                                accept=".png, .pdf, .jpg, .jpeg" (change)="onFileChangedshare($event,'passport',i,'2')" />
+                                <img src="./assets/images/tick.png" style="height: 25px; width:25px; margin-left: 55px;" *ngIf="showPass.includes(i)" [attr.id]="'pass'+i"/>                                        
+                                            </label>
+                                            <div *ngIf=" (item.controls.passport.dirty || item.controls.passport.touched || isSubmitted) && item.controls.passport.invalid">
+                                                <div class="error-msg" *ngIf="item.controls.passport.errors.required">Upload Passport</div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label class="custom-input">
+                                            <input type="file" formControlName="visa" (change)="onFileChangedshare($event,'visa',i,'2')"  accept=".png, .pdf, .jpg, .jpeg">
+                                <img src="./assets/images/tick.png" style="height: 25px; width:25px; margin-left: 55px;" *ngIf="showVisa.includes(i)" [attr.id]="'visa'+i"/>                                        
+                                        </label>
+                                            <div *ngIf=" (item.controls.visa.dirty || item.controls.visa.touched || isSubmitted) && item.controls.visa.invalid">
+                                                <div class="error-msg" *ngIf="item.controls.visa.errors.required">Upload Visa</div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //End of Row -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="clear"></div>
+                <p>&nbsp; </p>
+                <p> &nbsp;</p>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <!-- <div class="form-group">
+                            <input type="button" class="btn btn-default" value="Go Back" (click)="test()">
+                        </div> -->
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default" value="Save & continue">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-default" [routerLink]="['/home']" value="Save & exit">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3">
+
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+
+
+</div>

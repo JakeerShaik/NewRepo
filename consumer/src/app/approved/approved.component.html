@@ -1,0 +1,100 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-lg-12 ">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10  header-progress-bar">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 ">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10 text-center padding_0">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Personal Details</div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Address Details</div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Employer Details</div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Bank Details</div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Complete</div>
+    </div>
+    <div class="col-lg-1"></div>
+
+  </div>
+</div>
+<div class="container">
+
+
+  <div class="col-lg-12">
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <!-- <alert></alert> -->
+
+    <div class="col-lg-12">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4 text-center">
+        <img src="./assets/images/approve.png"  width="150">
+
+      </div>
+      <div class="col-lg-4"></div>
+
+    </div>
+    <div class="col-lg-12">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10 text-center">
+        <h2>Congratulations! </h2>
+<h3>Your loan has been pre-approved</h3>
+      </div>
+      <div class="col-lg-1"></div>
+
+    </div>
+    <p>&nbsp;</p>
+
+    <div class="col-lg-12">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-7">
+        <p>Loan Reference Number: <label>{{loanReferenceDetail.lndmeloanReference}}</label></p>
+        <p>Loan Amount: <label> {{loanReferenceDetail.lndmeloanAmount | currency:'AED ': 'symbol' : '1.0'}} </label></p>
+        <p>Loan Interest rate: <label>{{loanReferenceDetail.interestrate}} %</label></p>
+      </div>
+    </div>
+<div class="col-lg-12">
+    <div class="col-lg-1"></div>
+      <div class="col-lg-10 text-center">
+          <p>You will receive an email to your registered email address with all other details</p>
+  
+        </div>
+</div>
+
+    <div class="col-lg-12 text-center">
+
+      <p>&nbsp; </p>
+      <div class="col-lg-5 col-md-5 col-sm-5">
+
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        <div class="form-group">
+          <input type="button" class="btn btn-default" (click)="proceed()" value="Schedule a visit">
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-5 col-sm-5">
+        <!-- <div class="form-group">
+          <input type="button" class="btn btn-default" (click)="decline" value="Not Interested">
+        </div> -->
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+</div>

@@ -1,0 +1,128 @@
+<app-header></app-header>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-12 jumbotron">
+        <div class="col-lg-12">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 text-center">
+                <h2>Upload your Personal Documents</h2>
+                <h4 class="font-color-blue">Upload Image (JPEG, JPG, PNG), PDF and not more than 10 MB</h4>
+                <p>&nbsp;</p>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="col-lg-12">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 text-center">
+                <alert></alert>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p> &nbsp;</p>
+
+            <form [formGroup]='form'>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4 text-left"><Label class="font-color-brown">Emirates ID (front and back)<span
+                                    class="error-astrix"> *</span></Label></div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="upload-eid" class="custom-input">
+                                    <input formControlName="eid" id="upload-eid" name="upload-eid" type="file" accept=".png, .pdf, .jpg, .jpeg"
+                                        (change)="onFileChanged($event,'EmiratesId')" />
+                                    <img src="./assets/images/tick.png" style="height: 25px; width:25px" *ngIf="emiratesid" /></label>
+                                <div *ngIf=" (eid.dirty || eid.touched || isSubmitted) && eid.invalid">
+                                    <div class="error-msg" *ngIf="eid.errors.required">Select Emirates ID</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4 text-left"><Label class="font-color-brown">Passport<span class="error-astrix">
+                                    *</span></Label></div>
+                        <div class="col-lg-2">
+                            <div class="form-group ">
+                                <label for="upload-pass" class="custom-input">
+                                    <input formControlName="passport" id="upload-pass" name="upload-pass" type="file"
+                                        accept=".png, .pdf, .jpg, .jpeg" (change)="onFileChanged($event,'Passport')" />
+                                    <img src="./assets/images/tick.png" style="height: 25px; width:25px" *ngIf="pass" /></label>
+                                <div *ngIf=" (passport.dirty || isSubmitted) && passport.invalid">
+                                    <div class="error-msg" *ngIf="passport.errors.required">Select Passport</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4 text-left"><Label class="font-color-brown">Visa</Label></div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="upload-visa" class="custom-input">
+                                    <input formControlName="visanum" id="upload-visa" name="upload-visa" type="file"
+                                        accept=".png, .pdf, .jpg, .jpeg" (change)="onFileChanged($event,'Visa')" />
+                                    <img src="./assets/images/tick.png" style="height: 25px; width:25px;" *ngIf="visa" />
+                                </label>
+                                <!-- <div *ngIf=" (FirstName.dirty || isSubmitted) && FirstName.invalid">
+                          <div class="error-msg" *ngIf="FirstName.errors.required">Enter First Name</div>
+                      </div> -->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <p>&nbsp;</p>
+                <div class="col-lg-12 text-center">
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-lg-sm-3 col-xs-3">
+                        <div class="form-group">
+                            <input type="button" class="btn btn-default" (click)="nextForm()" value="Continue">
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-2 col-md-2 col-lg-sm-3 col-xs-3">
+                        <div class="form-group">
+                            <input type="button" class="btn btn-default" value="Go Back" [routerLink]="['/lets-go']">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

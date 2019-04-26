@@ -1,0 +1,286 @@
+<app-header></app-header>
+
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Financials</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Company Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Borrower Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Address Details</div>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+
+    </div>
+  <div class="col-lg-9 ">
+        <p> &nbsp;</p>
+                <div class="col-lg-10 text-center">
+                    <h2 class="title-color">Please share your company's communication address</h2>
+                </div>
+    
+        <p> &nbsp;</p>
+    <div class="col-lg-8">
+      <p> &nbsp;</p>
+   
+      <form class="form-horizontal" [formGroup]='billing_address'  novalidate>
+            <div class="col-lg-12 ">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <alert></alert>
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="buildingName" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Building Name<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (buildingName.dirty || isSubmitted) && buildingName.invalid">
+                                <div class="error-msg" *ngIf="buildingName.errors.required">Enter Building Name</div>
+                                <div class="error-msg" *ngIf="buildingName.errors.minlength">Building Name should be
+                                    minimum {{buildingName.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="buildingName.errors.maxlength">Building Name should be
+                                    maximum {{buildingName.errors.maxlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="unitNumber" class="floating-input" placeholder=" ">
+                            <input type="hidden" formControlName="companyType" value="PARENT">
+                            <span class="highlight"></span>
+
+                            <label>Unit Number<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (unitNumber.dirty || isSubmitted) && unitNumber.invalid">
+                                <div class="error-msg" *ngIf="unitNumber.errors.required">Enter Unit</div>
+                                <div class="error-msg" *ngIf="unitNumber.errors.minlength">Unit should be minimum
+                                    {{unitNumber.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="unitNumber.errors.maxlength">Unit should be maximum
+                                    {{unitNumber.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="area" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Area/Locality<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (area.dirty || isSubmitted) && area.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="area.errors.required">Enter Area/Locality</div>
+                                <div class="error-msg" *ngIf="area.errors.maxlength">Area/Locality should be maximum
+                                    {{area.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="area.errors.minlength">Area/Locality should be minimum
+                                    {{area.errors.minlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1 "> </div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="streetName" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Street Number/Name<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (streetName.dirty || isSubmitted) && streetName.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="streetName.errors.required">Enter Area/Locality</div>
+                                <div class="error-msg" *ngIf="streetName.errors.maxlength">Street Number/Name should be
+                                    maximum {{streetName.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="streetName.errors.minlength">Street Number/Name should be
+                                    minimum {{streetName.errors.minlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="landMark" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Landmark<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (landMark.dirty || isSubmitted) && landMark.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="landMark.errors.required">Enter Landmark</div>
+                                <div class="error-msg" *ngIf="landMark.errors.maxlength">Landmark should be maximum
+                                    {{landMark.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="landMark.errors.minlength">Landmark should be minimum
+                                    {{landMark.errors.minlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+
+                            <select formControlName="countryCode"  class="floating-select" onclick="this.setAttribute('value', this.value);">
+                                <option selected value="AE" selected>United Arab Emirates</option>
+                            </select>
+                            <span class="highlight"></span>
+                            <label>Country<span class="error-astrix"> *</span></label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <select formControlName="cityCode" class="floating-select" >
+                    <option value="" selected>Select Option</option>
+                               
+                                <option *ngFor="let emiratecities of emiratecity" [value]="emiratecities.code">{{emiratecities.name}}</option>
+
+                            </select>
+                            <span class="highlight"></span>
+                            <label>Emirate/City<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (cityCode.dirty || isSubmitted) && cityCode.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="cityCode.errors.required">Select Emirate/City</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="telephoneOffice" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Telephone (Office)<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (telephoneOffice.dirty || isSubmitted) && telephoneOffice.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="telephoneOffice.errors.required">Enter Telephone (Office)</div>
+                                <div class="error-msg" *ngIf="telephoneOffice.errors.maxlength">Telephone should be
+                                    maximum {{telephoneOffice.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="telephoneOffice.errors.minlength">Telephone should be
+                                    minimum {{telephoneOffice.errors.minlength.requiredLength}} character</div>
+                                    <div class="error-msg" *ngIf="telephoneOffice.errors.pattern">Number Only and start with zero </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="mobileOffice" class="floating-input" placeholder=" ">
+
+                            <span class="highlight"></span>
+
+                            <label>Mobile (Office)</label>
+                            <div *ngIf=" (mobileOffice.dirty || isSubmitted) && mobileOffice.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="mobileOffice.errors.required">Enter Telephone (Home)</div>
+                                <div class="error-msg" *ngIf="mobileOffice.errors.maxlength">Telephone should be
+                                    maximum {{mobileOffice.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="mobileOffice.errors.minlength">Telephone should be
+                                    minimum {{mobileOffice.errors.minlength.requiredLength}} character</div>
+                                    <div class="error-msg" *ngIf="mobileOffice.errors.pattern">Number Only and start with zero </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="faxNo" class="floating-input" placeholder=" ">
+
+                            <span class="highlight"></span>
+
+                            <label>Fax Number<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (faxNo.dirty || isSubmitted) && faxNo.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="faxNo.errors.required">Enter Fax Number</div>
+                                <div class="error-msg" *ngIf="faxNo.errors.maxlength">Fax Number should be maximum
+                                    {{faxNo.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="faxNo.errors.minlength">Fax Number should be minimum
+                                    {{faxNo.errors.minlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="emailOffice" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+                            <label>Email (Office)<span class="error-astrix"> *</span></label>
+                            <input type="hidden" formControlName="companyType" value="BILLING">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label></label>
+                            <input type="hidden" formControlName="applicationId" value="">
+                            <div *ngIf=" (emailOffice.dirty || isSubmitted) && emailOffice.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="emailOffice.errors.required">Enter Email (Office)</div>
+                                <div class="error-msg" *ngIf="emailOffice.errors.pattern">Enter Valid Email</div>
+                                <div class="error-msg" *ngIf="emailOffice.errors.maxlength">Email should be maximum
+                                    {{emailOffice.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="emailOffice.errors.minlength">Email should be minimum
+                                    {{emailOffice.errors.minlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+               
+                    <p>&nbsp; </p>
+                    <div class="col-lg-2"> </div>
+                    <div class="col-lg-3 ">
+                            <input type="button" class="btn btn-default" (click)="save('saveandcont')" value="Save & Continue">
+                    </div>
+                    <div class="col-lg-3 ">
+                            <input type="button" class="btn btn-default" (click)="save('saveandexit')" value="Save & Exit">
+                    </div>
+
+
+                </div>
+
+      </form>
+
+  </div>
+  <div class="col-lg-4">
+    <p>&nbsp;</p>
+    <div class="btn-group-vertical col-lg-12" >
+  
+        <button type="button" style="margin-top: 5px; border-radius: 20px;" class="btn btn-default btn-lg font-11" value="1">Billing & Communication Address</button>
+        <button type="button" style="margin-top: 5px; border-radius: 20px;" class="btn  btn-lg font-11" value="1">Registered office Address</button>
+        <button type="button" style="margin-top: 5px; border-radius: 20px;" class="btn  btn-lg font-11" value="1" *ngIf="parent">Parent Company Address</button>
+      
+      </div>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,471 @@
+<app-header></app-header>
+
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Financials</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Company Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Borrower Details</div>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+    </div>
+    <div class="col-lg-9">
+        <div class="col-lg-9">
+            <p> &nbsp;</p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8">
+                        <h2 class="title-color">Tell us more about yourself</h2>
+                    </div>
+                </div>
+            </div>
+            <p> &nbsp;</p>
+            <form class="form-horizontal" [formGroup]='share_holders' (ngSubmit)="save('saveandcont')" novalidate>
+                <div class="col-lg-10 ">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <alert></alert>
+                        <div class="floating-label form-group">
+                            <select formControlName="title" class="floating-select">
+                                <option value="" selected>Select Title</option>
+                                <option value="mr">Mr.</option>
+                                <option value="miss">Miss</option>
+                                <option value="mrs">Mrs.</option>
+                                <option value="prof">Prof.</option>
+                                <option value="dr">Dr.</option>
+                            </select>
+                            <span class="highlight"></span>
+                            <label>Title <span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (title.dirty || isSubmitted) && title.invalid">
+                                <div class="error-msg" *ngIf="title.errors.required">Select option</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="firstName" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>First Name<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (firstName.dirty || isSubmitted) && firstName.invalid">
+                                <div class="error-msg" *ngIf="firstName.errors.required">Enter First Name</div>
+                                <div class="error-msg" *ngIf="firstName.errors.minlength">should be minimum
+                                    {{firstName.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="firstName.errors.pattern">Only Alphabets</div>
+                                <div class="error-msg" *ngIf="firstName.errors.maxlength">should be maximum
+                                    {{firstName.errors.maxlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="middleName" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+                            <label>Middle Name</label>
+                            <div *ngIf=" (middleName.dirty || isSubmitted) && middleName.invalid">
+                                <div class="error-msg" *ngIf="middleName.errors.required">Enter Last Name</div>
+                                <div class="error-msg" *ngIf="middleName.errors.minlength">should be minimum
+                                    {{middleName.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="middleName.errors.pattern">Only Alphabets</div>
+                                <div class="error-msg" *ngIf="middleName.errors.maxlength">should be maximum
+                                    {{middleName.errors.maxlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1 "></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="lastName" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+                            <label>Last Name<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (lastName.dirty || isSubmitted) && lastName.invalid">
+                                <div class="error-msg" *ngIf="lastName.errors.required">Enter Last Name</div>
+                                <div class="error-msg" *ngIf="lastName.errors.minlength">should be minimum
+                                    {{lastName.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="lastName.errors.pattern">Only Alphabets</div>
+                                <div class="error-msg" *ngIf="lastName.errors.maxlength">should be maximum
+                                    {{lastName.errors.maxlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <select formControlName="gender" class="floating-select">
+                                <option value="" selected>Select Gender</option>
+                                <option value="MALE">Male</option>
+                                <option value="FEMALE">Female</option>
+                            </select>
+                            <span class="highlight"></span>
+                            <label>Gender<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (gender.dirty || isSubmitted) && gender.invalid">
+                                <div class="error-msg" *ngIf="gender.errors.required">Select option</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <select formControlName="designationCode" class="floating-select" onclick="this.setAttribute('value', this.value);">
+                                <option value="" selected>Select Designation</option>
+                                <option *ngFor="let desigs of designation" [value]="desigs.doccupationLevelCode">{{desigs.name}}</option>
+
+                            </select>
+                            <span class="highlight"></span>
+                            <label>Designation<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (designationCode.dirty || isSubmitted) && designationCode.invalid">
+                                <div class="error-msg" *ngIf="designationCode.errors.required">Select option</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="email" formControlName="emailId" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Email<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (emailId.dirty || isSubmitted) && emailId.invalid">
+                                <div class="error-msg" *ngIf="emailId.errors.required">Enter Email</div>
+                                <div class="error-msg" *ngIf="emailId.errors.minlength">should be minimum
+                                    {{emailId.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="emailId.errors.pattern">Enter valid Email</div>
+                                <div class="error-msg" *ngIf="emailId.errors.maxlength">should be maximum
+                                    {{emailId.errors.maxlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <!-- <input type="text" formControlName="dateofBirth" class="floating-input" placeholder=" "> -->
+                            <!-- <span class="customLabel">Date of Birth<span class="error-astrix"> *</span></span> -->
+
+                            <input type="text" [max]="max" [min]="maxdate" [owlDateTimeTrigger]="dob" [owlDateTime]="dob"
+                                formControlName="dateofBirth" class="floating-input" readonly placeholder=" ">
+                            <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #dob></owl-date-time>
+                            <span class="highlight"></span>
+
+                            <label>Date of Birth<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (dateofBirth.dirty || isSubmitted) && dateofBirth.invalid">
+                                <div class="error-msg" *ngIf="dateofBirth.errors.required">Select Date of Birth</div>
+                                <div class="error-msg" *ngIf="dateofBirth.errors.minlength">should be minimum
+                                    {{dateofBirth.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="dateofBirth.errors.maxlength">should be maximum
+                                    {{dateofBirth.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="sharePercentage" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Share %<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (sharePercentage.dirty || isSubmitted) && sharePercentage.invalid">
+                                <div class="error-msg" *ngIf="sharePercentage.errors.required">Enter Share %</div>
+                                <div class="error-msg" *ngIf="sharePercentage.errors.pattern">Only Number</div>
+                                <div class="error-msg" *ngIf="sharePercentage.errors.minlength">should be minimum
+                                    {{sharePercentage.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="sharePercentage.errors.maxlength">should be maximum
+                                    {{sharePercentage.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="mobileNumber" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+                            <label>Mobile Number<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (mobileNumber.dirty || isSubmitted) && mobileNumber.invalid">
+                                <div class="error-msg" *ngIf="mobileNumber.errors.required">Enter Mobile Number</div>
+                                <div class="error-msg" *ngIf="mobileNumber.errors.minlength">should be minimum
+                                    {{mobileNumber.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="mobileNumber.errors.maxlength">should be maximum
+                                    {{mobileNumber.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="mobileNumber.errors.pattern">Number Only and start with
+                                    zero </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <select formControlName="martialStatus" class="floating-select" onclick="this.setAttribute('value', this.value);">
+                                <option value="" selected>Select Martial Status</option>
+                                <option value="MARRIED">Married</option>
+                                <option value="UNMARRIED">Unmarried</option>
+                                <option value="DIVORCED">Divorced</option>
+                            </select>
+                            <span class="highlight"></span>
+                            <label>Martial Status<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (martialStatus.dirty || isSubmitted) && martialStatus.invalid">
+                                <div class="error-msg" *ngIf="martialStatus.errors.required">Select option</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="eidNumber" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>EID Number<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (eidNumber.dirty || isSubmitted) && eidNumber.invalid">
+                                <div class="error-msg" *ngIf="eidNumber.errors.required">Enter EID Number</div>
+                                <div class="error-msg" *ngIf="eidNumber.errors.pattern">Only Number</div>
+                                <div class="error-msg" *ngIf="eidNumber.errors.minlength">should be minimum
+                                    {{eidNumber.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="eidNumber.errors.maxlength">should be maximum
+                                    {{eidNumber.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <!-- <input type="text" formControlName="expirydate" class="floating-input" placeholder=" "> -->
+                            <input type="text" [min]="min" [owlDateTimeTrigger]="eidexp" [owlDateTime]="eidexp"
+                                formControlName="expirydate" class="floating-input" readonly placeholder=" ">
+                            <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #eidexp></owl-date-time>
+                            <span class="highlight"></span>
+
+                            <span class="highlight"></span>
+
+                            <label>Expiry date of EID<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (expirydate.dirty || isSubmitted) && expirydate.invalid">
+                                <div class="error-msg" *ngIf="expirydate.errors.required">Select Expiry date</div>
+                                <div class="error-msg" *ngIf="expirydate.errors.minlength">should be minimum
+                                    {{expirydate.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="expirydate.errors.maxlength">should be maximum
+                                    {{expirydate.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <select formControlName="nationality" class="floating-select" onclick="this.setAttribute('value', this.value);">
+                                <option value="" selected>Select Nationality</option>
+                                <option *ngFor="let countryLists of country" [value]="countryLists.code3">{{countryLists.name}}</option>
+
+                            </select>
+                            <span class="highlight"></span>
+                            <label>Nationality<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (nationality.dirty || isSubmitted) && nationality.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="nationality.errors.required">Select Option</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="passportNumber" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+                            <label>Passport number<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (passportNumber.dirty || isSubmitted) && passportNumber.invalid">
+                                <div class="error-msg" *ngIf="passportNumber.errors.required">Enter Passport Number</div>
+                                <div class="error-msg" *ngIf="passportNumber.errors.minlength">should be minimum
+                                    {{passportNumber.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="passportNumber.errors.maxlength">should be maximum
+                                    {{passportNumber.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <!-- <input type="text" formControlName="passportExpiryDate" class="floating-input" placeholder=" "> -->
+                            <input type="text" [min]="min" [owlDateTimeTrigger]="passexp" [owlDateTime]="passexp"
+                                formControlName="passportExpiryDate" class="floating-input" readonly placeholder=" ">
+                            <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #passexp></owl-date-time>
+                            <span class="highlight"></span>
+                            <label>Passport Expiry date<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (passportExpiryDate.dirty || isSubmitted) && passportExpiryDate.invalid">
+                                <div class="error-msg" *ngIf="passportExpiryDate.errors.required">Select Passport
+                                    Expiry
+                                    Date</div>
+                                <div class="error-msg" *ngIf="passportExpiryDate.errors.minlength">should be minimum
+                                    {{passportExpiryDate.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="passportExpiryDate.errors.maxlength">should be maximum
+                                    {{passportExpiryDate.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="visaNumber" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Visa number</label>
+                            <div *ngIf=" (visaNumber.dirty || isSubmitted) && visaNumber.invalid">
+                                <div class="error-msg" *ngIf="visaNumber.errors.required">Enter Visa Number</div>
+                                <div class="error-msg" *ngIf="visaNumber.errors.minlength">should be minimum
+                                    {{visaNumber.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="visaNumber.errors.maxlength">should be maximum
+                                    {{visaNumber.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <!-- <input type="text" formControlName="visaExpiryDate" class="floating-input" placeholder=" "> -->
+                            <input type="text" [min]="min" [owlDateTimeTrigger]="visaexp" [owlDateTime]="visaexp"
+                                formControlName="visaExpiryDate" class="floating-input" readonly placeholder=" ">
+                            <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #visaexp></owl-date-time>
+                            <span class="highlight"></span>
+                            <label>Visa Expiry Date</label>
+                            <div *ngIf=" (visaExpiryDate.dirty || isSubmitted) && visaExpiryDate.invalid">
+                                <div class="error-msg" *ngIf="visaExpiryDate.errors.required">Select Visa Expiry Date</div>
+                                <div class="error-msg" *ngIf="visaExpiryDate.errors.minlength">should be minimum
+                                    {{visaExpiryDate.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="visaExpiryDate.errors.maxlength">should be maximum
+                                    {{visaExpiryDate.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="uaeAddress" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>UAE Residential address<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (uaeAddress.dirty || isSubmitted) && uaeAddress.invalid">
+                                <div class="error-msg" *ngIf="uaeAddress.errors.required">Enter Address</div>
+                                <div class="error-msg" *ngIf="uaeAddress.errors.minlength">should be minimum
+                                    {{uaeAddress.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="uaeAddress.errors.maxlength">should be maximum
+                                    {{uaeAddress.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="floating-label form-group">
+                            <input type="text" formControlName="homeCountryAddress" class="floating-input" placeholder=" ">
+                            <span class="highlight"></span>
+
+                            <label>Home Country Residential address<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (homeCountryAddress.dirty || isSubmitted) && homeCountryAddress.invalid">
+                                <div class="error-msg" *ngIf="homeCountryAddress.errors.required">Enter Address</div>
+                                <div class="error-msg" *ngIf="homeCountryAddress.errors.minlength">should be minimum
+                                    {{homeCountryAddress.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="homeCountryAddress.errors.maxlength">should be maximum
+                                    {{homeCountryAddress.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 ">
+
+                    <p>&nbsp; </p>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3">
+
+                        <input type="hidden" formControlName="index">
+                        <input type="submit" class="btn btn-default" value="Save & Continue">
+                    </div>
+                    <div class="col-lg-3">
+
+                        <input type="button" class="btn btn-default" (click)="save('saveandexit')" value="Save & Exit">
+
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3">
+            <p>&nbsp;</p>
+            <div class="btn-group-vertical col-lg-12">
+                <button style="margin-top: 7px; border-radius: 20px; color: white;" type="button"
+                    class="btn btn-lg" [ngClass]="{'btn-primary': step==i}"  *ngFor="let shareHolderCounts of shareHolderCount; let i = index;" value="{{i}}"
+                    (click)="shareHoderSelect($event.target.value)" [attr.id]="i">
+                    Share Holder {{i+1}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

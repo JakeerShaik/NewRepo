@@ -1,0 +1,197 @@
+<app-header></app-header>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Personal Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Address Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Employer Details</div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+        <div class="col-lg-12 jumbotron">
+ 
+            <div class="col-lg-12">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-9 text-center">
+                        <h2>Tell us more about your work</h2>
+                              
+                    </div>
+                    <div class="col-lg-2"></div>
+        
+                </div>
+                <p>&nbsp;</p>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-9">
+        <form class="form-horizontal" [formGroup]='occupationForm'   novalidate>
+            <div class="col-lg-10 ">
+                <alert></alert>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <select formControlName="occupationLevel" required class="form-control">
+                          <!-- <option value="">Occupation Level<span class="error-astrix"> *</span></option> -->
+                        <option *ngFor="let occupations of occupation" [value]="occupations.id">{{occupations.name}}</option>
+                        </select>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Occupation Level<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (occupationLevel.dirty || isSubmitted) && occupationLevel.invalid">
+                                <div class="error-msg" *ngIf="occupationLevel.errors.required">Select Occupation Level</div>
+
+                            </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="employeerName" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Name of Employer<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (employeerName.dirty || isSubmitted) && employeerName.invalid">
+                                <div class="error-msg" *ngIf="employeerName.errors.required">Enter Employer Name</div>
+                                <div class="error-msg" *ngIf="employeerName.errors.minlength">Employer Name should be minimum {{employeerName.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="employeerName.errors.maxlength">Employer Name should be maximum {{employeerName.errors.maxlength.requiredLength}} character</div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="officeAddress" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Office Address<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (officeAddress.dirty || isSubmitted) && officeAddress.invalid">
+                            <div class="error-msg" *ngIf="officeAddress.errors.required">Enter Address</div>
+                            <div class="error-msg" *ngIf="officeAddress.errors.minlength">Address should be minimum {{officeAddress.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="officeAddress.errors.maxlength">Address should be maximum {{officeAddress.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="telephoneOffice" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Office Telephone Number<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (telephoneOffice.dirty || isSubmitted) && telephoneOffice.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="telephoneOffice.errors.required">Enter Telephone</div>
+                            <div class="error-msg" *ngIf="telephoneOffice.errors.minlength">Telephone should be minimum {{telephoneOffice.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="telephoneOffice.errors.maxlength">Telephone Number should be Maximum {{telephoneOffice.errors.maxlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="telephoneOffice.errors.pattern">Number Only and start with zero</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <select formControlName="industrySector" required class="form-control">
+                            <!-- <option value="">Industry Sector<span class="error-astrix"> *</span></option> -->
+                        <option *ngFor="let industryDrops of industryDrop" [value]="industryDrops.id">{{industryDrops.name}}</option>
+                          </select>
+                          <span class="highlight"></span>
+                          <span class="bar"></span>
+                          <label>Industry Sector<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (industrySector.dirty || isSubmitted) && industrySector.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="industrySector.errors.required">Select Industry Sector</div>
+        
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="lengthOfService" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Years of service<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (lengthOfService.dirty || isSubmitted) && lengthOfService.invalid">
+                            <div class="error-msg" *ngIf="lengthOfService.errors.required">Years of service</div>
+                            <div class="error-msg" *ngIf="lengthOfService.errors.minlength">Years of service should be minimum {{lengthOfService.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="lengthOfService.errors.maxlength">Years of service should be maximum {{lengthOfService.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="annualSalary" required class="form-control" (blur)="transformAmount($event)">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Annual Salary<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (annualSalary.dirty || isSubmitted) && annualSalary.invalid">
+                                <div class="error-msg" *ngIf="annualSalary.errors.pattern">Number Only </div>
+                            <div class="error-msg" *ngIf="annualSalary.errors.required">Enter Annual Salary</div>
+                            <div class="error-msg" *ngIf="annualSalary.errors.minlength">Annual Salary should be minimum {{annualSalary.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="annualSalary.errors.maxlength">Annual Salary should be maximum {{annualSalary.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="clear"></div>
+                <p>&nbsp; </p>
+                
+                <div class="col-lg-2 col-md-1 col-sm-1"></div>
+
+                <div class="col-lg-2 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-default"  (click)="addressDatasave('cont')"  value="Continue">
+                        <!-- [disabled]="!occupationForm.valid" -->
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-3 col-sm-3">
+                   
+                </div>
+               
+                <div class="col-lg-2 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-default" value="Go Back" [routerLink]="['/registered-address']">
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+</div>

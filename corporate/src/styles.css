@@ -1,0 +1,465 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,400i,600";
+/*Responsive CSS triangles. Resize the Result section to see the triangles in action.*/
+
+@import "~ng-pick-datetime\assets\style\picker.min.css";
+
+
+    /* loader Css */
+    /* Absolute Center Spinner */
+    .loading {
+        position: fixed;
+        z-index: 1999;
+        height: 2em;
+        width: 2em;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      
+      /* Transparent Overlay */
+      .loading:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+      }
+      
+      /* :not(:required) hides these rules from IE9 and below */
+      .loading:not(:required) {
+        /* hide "loading..." text */
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+      }
+      
+      .loading:not(:required):after {
+        content: '';
+        display: block;
+        font-size: 10px;
+        width: 1em;
+        height: 1em;
+        margin-top: -0.5em;
+        -webkit-animation: spinner 1500ms infinite linear;
+        -moz-animation: spinner 1500ms infinite linear;
+        -ms-animation: spinner 1500ms infinite linear;
+        -o-animation: spinner 1500ms infinite linear;
+        animation: spinner 1500ms infinite linear;
+        border-radius: 0.5em;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+      }
+      
+      /* Animation */
+      
+      @-webkit-keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @-moz-keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @-o-keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+/* ////////// End Of Loader */
+.font-11
+{
+  font-size: 11px;
+}
+.font-10
+{
+  font-size: 10px;
+}
+
+body {
+    height: 100vh;
+    color: #6e6e6e;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+  
+}
+.error-msg {
+    padding: 2px;
+    color: red;
+    font-size: 14px;
+ }
+ .error-astrix
+ {
+  color: red;
+
+ }
+ .hover_mouse
+ {
+   cursor: pointer;
+ }
+.box-redious-45
+{
+    border-radius: 0px 45px 45px 45px;
+-moz-border-radius: 0px 45px 45px 45px;
+-webkit-border-radius: 0px 45px 45px 45px;
+border: 0px solid #000000;
+
+-webkit-box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
+box-shadow: 7px 7px 3px 0px rgba(219, 216, 216, 0.75);
+}
+.header-progress-bar-box
+{
+  border-radius: 10px;
+  background-color: #AD8631;
+  min-height: 12px;
+}
+
+.header-progress-bar
+{
+  padding: 0%;
+    background-color: #F3F3F3;
+    min-height: 12px;
+    border-radius: 10PX;
+}
+.sidebar_round
+{
+  border-radius: 30px;
+  background-image: linear-gradient(to bottom, #95C790, #9ECDED);
+  min-height: 75vh;
+  margin-top: 8px;
+}
+
+.padding_0
+{
+    padding: 0px;
+
+}
+.padding_right_0
+{
+    padding-right: 0px;
+}
+
+.btn-default
+{
+     background-color: #004BB5;
+    color: white;
+    border-radius: 20px;
+min-width: 150px;
+
+}
+
+
+.btn-default:focus
+ {
+   outline:0;
+   background-color: #004BB5;
+   color: white;
+  }
+
+
+
+.btn-default:hover
+{
+    color:white;
+    background-color: #196A8A;
+    outline:0;
+}
+.clear {
+	clear: both; /* you can either use left or right */
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 60px;
+    cursor: pointer;
+}
+.image-upload-small > input
+{
+    display: none;
+}
+
+.image-upload-small img
+{
+    width: 36px;
+    cursor: pointer;
+}
+hr
+ {
+  border: none;
+  height: 1.2px;
+  /* Set the hr color */
+  color: #AD8631; /* old IE */
+  background-color: #AD8631; /* Modern Browsers */
+}
+
+
+.progress-bar-vertical {
+  width: 25px;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 40px;
+  float: left;
+  margin-right: 20px;
+  color: #409B39;
+}
+
+.progress-bar-vertical .progress-bar {
+  width: 100%;
+  height: 0;
+  -webkit-transition: height 0.6s ease;
+  -o-transition: height 0.6s ease;
+  transition: height 0.6s ease;
+  background-image: linear-gradient( #E6C543, #E05267);
+  border-radius: 5px;
+
+}
+.progress
+{
+  background-color: #E2E2E2;
+}
+
+.customLegend {
+  border: 1px solid orangered;
+  position: relative;
+  padding-top: 10px;
+  border-radius: 20px;
+}
+
+.list_none {
+  list-style-type: none;
+}
+
+.margin_bottom_25
+{
+  margin-bottom: 30%;
+}
+
+
+.font-color-brown
+{
+  color: #AD8631;
+}
+/* ////////Home page///// */
+.home_icon
+{
+max-width: 120px;
+max-height: 120px;
+}
+.side_bar
+{
+  position: fixed;
+  bottom:0px;
+  z-index:300px;
+}
+
+
+
+/* //////Meterial Design/////// */
+
+
+/****  floating-Lable style start ****/
+.floating-label { 
+  position:relative; 
+  margin-bottom:20px; 
+}
+.floating-input , .floating-select {
+  font-size:14px;
+  /* padding:4px 4px; */
+  display:block;
+  width:100%;
+  height:30px;
+  background-color: transparent;
+  border:none;
+  border-bottom:1px solid #757575;
+  margin-bottom: 5px;
+}
+
+.floating-input:focus , .floating-select:focus {
+     outline:none;
+     border-bottom:2px solid #5264AE; 
+}
+
+.floating-label label {
+  color:#999; 
+  font-size:14px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  /* left:5px; */
+  top:5px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+.floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+  top:-18px;
+  font-size:14px;
+  color:#AD8631;
+}
+
+.floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
+  top:-18px;
+  font-size:14px;
+  color:#AD8631;
+}
+
+/* active state */
+.floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
+  width:50%;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.floating-textarea {
+   min-height: 30px;
+   max-height: 260px; 
+   overflow:hidden;
+  overflow-x: hidden; 
+}
+
+/* highlighter */
+.highlight {
+  position:absolute;
+  height:50%; 
+  width:100%; 
+  top:15%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+
+/* active state */
+.floating-input:focus ~ .highlight , .floating-select:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* animation */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+/****  floating-Lable style end ****/
+
+.customLabel
+{
+ font-size:15px;
+ color:#00BFD5;
+
+}
+
+.upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: 100;
+  
+}
+
+
+.custom-input input {
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.custom-input {
+  background-image: url("/assets/images/file_upload_small.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  cursor: pointer;
+  height: 35px;
+
+}
+
+.sideButton
+{
+  margin-top: 7px;
+  border-radius: 20px;
+}
+
+.title-color
+{
+  color: #004bb5;
+}
+

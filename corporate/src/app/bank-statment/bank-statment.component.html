@@ -1,0 +1,372 @@
+<app-header></app-header>
+
+<div class="row">
+  <div class="col-lg-12 ">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10  header-progress-bar">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+    </div>
+    <div class="col-lg-1"></div>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 ">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10 text-center padding_0">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Financials</div>
+    </div>
+    <div class="col-lg-2"></div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3 padding_0" id="sidebar">
+    <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+  </div>
+  <div class="col-lg-9">
+    <p> &nbsp;</p>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-8">
+          <h2 class="title-color">Let's talk numbers</h2>
+          <h5>Upload JPEG, PDF and not more than 10MB</h5>
+        </div>
+      </div>
+    </div>
+    <alert></alert>
+
+    <p> &nbsp;</p>
+    <form [formGroup]='bank_statment' (ngSubmit)="saveData()">
+      <p>&nbsp;</p>
+      <div class="col-lg-6 text-center">
+        <label>Bank Statements</label>
+        <br>
+        <span>(Last 12 months)</span>
+        <fieldset class="customLegend">
+          <div class="row">
+            <div class="col-lg-6"><label>Month 1<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+
+                <label class="custom-input">
+                  <input type="file" formControlName="monthOne" (change)="onFileChanged($event,'bankStatement','0')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnOne"/>
+                </label>
+                <div *ngIf="(monthOne.dirty || isSubmitted) && monthOne.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthOne.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 2<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthTwo" (change)="onFileChanged($event,'bankStatement','1')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnTwo"/>
+
+                </label>
+                <div *ngIf="(monthTwo.dirty || isSubmitted) && monthTwo.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthTwo.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 3<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthThree" (change)="onFileChanged($event,'bankStatement','2')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnThree"/>
+
+                </label>
+                <div *ngIf="(monthThree.dirty || isSubmitted) && monthThree.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthThree.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 4<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+
+                <label class="custom-input">
+                  <input type="file" formControlName="monthFour" (change)="onFileChanged($event,'bankStatement','3')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnFour"/>
+
+                </label>
+                <div *ngIf="(monthFour.dirty || isSubmitted) && monthFour.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthFour.errors.required">Upload Document</div>
+              </div>
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 5<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthFive" (change)="onFileChanged($event,'bankStatement','4')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnFive"/>
+
+                </label>
+                <div *ngIf="(monthFive.dirty || isSubmitted) && monthFive.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthFive.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 6<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthSix" (change)="onFileChanged($event,'bankStatement','5')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnSix"/>
+
+                </label>
+                <div *ngIf="(monthSix.dirty || isSubmitted) && monthSix.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthSix.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 7<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+
+                <label class="custom-input">
+                  <input type="file" formControlName="monthSeven" (change)="onFileChanged($event,'bankStatement','6')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnSeven"/>
+
+                </label>
+                <div *ngIf="(monthSeven.dirty || isSubmitted) && monthSeven.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthSeven.errors.required">Upload Document</div>
+              </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6"><label>Month 8<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthEight" (change)="onFileChanged($event,'bankStatement','7')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnEight"/>
+                </label>
+                <div *ngIf="(monthEight.dirty || isSubmitted) && monthEight.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthEight.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 9<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthNine" (change)="onFileChanged($event,'bankStatement','8')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnNine"/>
+                </label>
+                <div *ngIf="(monthNine.dirty || isSubmitted) && monthNine.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthNine.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 10<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthTen" (change)="onFileChanged($event,'bankStatement','9')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnTen"/>
+
+                </label>
+                <div *ngIf="(monthTen.dirty || isSubmitted) && monthTen.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthTen.errors.required">Upload Document</div>
+              </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 11<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="custom-input">
+                  <input type="file" formControlName="monthEleven" (change)="onFileChanged($event,'bankStatement','10')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnEleven"/>
+                </label>
+                <div *ngIf="(monthEleven.dirty || isSubmitted) && monthEleven.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthEleven.errors.required">Upload Document</div>
+              </div>
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6"><label>Month 12<span class="error-astrix"> *</span></label></div>
+            <div class="col-lg-4">
+              <div class="form-group">
+
+                <label class="custom-input">
+                  <input type="file" formControlName="monthTwelve" (change)="onFileChanged($event,'bankStatement','11')" accept=".png, .pdf, .jpg, .jpeg">
+                  <img src="./assets/images/tick.png" style="height: 20px; width:20px;" *ngIf="mnTwelve"/>
+                </label>
+                <div *ngIf="(monthTwelve.dirty || isSubmitted) && monthTwelve.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="monthTwelve.errors.required">Upload Document</div>
+              </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-5 text-center">
+        <div class="row">
+          <label>Audited Financials</label>
+          <br>
+          <span>(Latest 3)</span>
+
+          <fieldset class="customLegend">
+
+            <div class="row">
+              <div class="col-lg-6"><label>Year 1<span class="error-astrix"> *</span></label></div>
+              <div class="col-lg-2">
+                <div class="form-group">
+                  <label class="custom-input">
+                    <input type="file" formControlName="yearOne" (change)="onFileChanged($event,'auditForm','0')" accept=".png, .pdf, .jpg, .jpeg">
+                    <img src="./assets/images/tick.png" style="height: 20px; width:20px; margin-left: 55px;" *ngIf="yea1"/>
+
+                  </label>
+                  <div *ngIf="(yearOne.dirty || isSubmitted) && yearOne.invalid" class=" error-msg">
+                    <div class="error-msg" *ngIf="yearOne.errors.required">Upload Document</div>
+                </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-6"><label>Year 2<span class="error-astrix"> *</span></label></div>
+              <div class="col-lg-2">
+                <div class="form-group">
+                  <label class="custom-input">
+                    <input type="file" formControlName="yearTwo" (change)="onFileChanged($event,'auditForm','1')" accept=".png, .pdf, .jpg, .jpeg">
+                    <img src="./assets/images/tick.png" style="height: 20px; width:20px; margin-left: 55px;" *ngIf="yea2"/>
+
+                  </label>
+                  <div *ngIf="(yearTwo.dirty || isSubmitted) && yearTwo.invalid" class=" error-msg">
+                    <div class="error-msg" *ngIf="yearTwo.errors.required">Upload Document</div>
+                </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-6"><label>Year 3<span class="error-astrix"> *</span></label></div>
+              <div class="col-lg-2">
+                <div class="form-group">
+                 
+                    <label class="custom-input">
+                       <input type="file" formControlName="yearThree" (change)="onFileChanged($event,'auditForm','2')" accept=".png, .pdf, .jpg, .jpeg">
+                    <img src="./assets/images/tick.png" style="height: 20px; width:20px; margin-left: 55px;" *ngIf="yea3"/>
+
+                    </label>
+                    <div *ngIf="(yearThree.dirty || isSubmitted) && yearThree.invalid" class=" error-msg">
+                      <div class="error-msg" *ngIf="yearThree.errors.required">Upload Document</div>
+                  </div>
+                  
+                  </div>
+                </div>
+              </div>
+
+          </fieldset>
+        </div>
+        <p>&nbsp;</p>
+        <div class="row">
+          <label>Inhouse Financials</label>
+          <fieldset class="customLegend">
+
+            <div class="row">
+              <div class="col-lg-6"><label>Till Date <span class="error-astrix"> *</span></label></div>
+              <div class="col-lg-2">
+                <div class="form-group">
+                
+                    <label class="custom-input">
+                     <input type="file" formControlName="inhouse" (change)="onFileChanged($event,'inhouseAuditForm','0')" accept=".png, .pdf, .jpg, .jpeg">
+                    <img src="./assets/images/tick.png" style="height: 20px; width:20px; margin-left: 55px;" *ngIf="inho" />
+
+                    </label>
+                    <div *ngIf="(inhouse.dirty || isSubmitted) && inhouse.invalid" class=" error-msg">
+                      <div class="error-msg" *ngIf="inhouse.errors.required">Upload Document</div>
+                  </div>
+                  </div>
+
+                </div>
+              </div>
+         
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="clear"></div>
+        <p>&nbsp; </p>
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Save & Continue">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="form-group">
+            <input type="button" class="btn btn-default" [routerLink]="['/home']" value="Save & Exit">
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <!-- <div class="form-group">
+                <input type="button" class="btn btn-default" value="Go Back" [routerLink]="['/home']">
+            </div> -->
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+
+</div>

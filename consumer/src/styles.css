@@ -1,0 +1,581 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,400i,600";
+/*Responsive CSS triangles. Resize the Result section to see the triangles in action.*/
+
+@import "~ng-pick-datetime\assets\style\picker.min.css";
+
+    /* loader Css */
+    /* Absolute Center Spinner */
+    .loading {
+        position: fixed;
+        z-index: 1999;
+        height: 2em;
+        width: 2em;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      
+      /* Transparent Overlay */
+      .loading:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+      }
+      
+      /* :not(:required) hides these rules from IE9 and below */
+      .loading:not(:required) {
+        /* hide "loading..." text */
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+      }
+      
+      .loading:not(:required):after {
+        content: '';
+        display: block;
+        font-size: 10px;
+        width: 1em;
+        height: 1em;
+        margin-top: -0.5em;
+        -webkit-animation: spinner 1500ms infinite linear;
+        -moz-animation: spinner 1500ms infinite linear;
+        -ms-animation: spinner 1500ms infinite linear;
+        -o-animation: spinner 1500ms infinite linear;
+        animation: spinner 1500ms infinite linear;
+        border-radius: 0.5em;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+      }
+      
+      /* Animation */
+      
+      @-webkit-keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @-moz-keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @-o-keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+/* ////////// End Of Loader */
+.font-11
+{
+  font-size: 11px;
+}
+.font-10
+{
+  font-size: 10px;
+}
+
+body {
+    height: 100vh;
+    color: #196A8A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+  
+}
+.error-msg {
+    
+    color: red;
+    font-size: 14px;
+ }
+ .error-astrix
+ {
+  color: red;
+
+ }
+ .hover_mouse
+ {
+   cursor: pointer;
+ }
+.box-redious-45
+{
+    border-radius: 0px 45px 45px 45px;
+-moz-border-radius: 0px 45px 45px 45px;
+-webkit-border-radius: 0px 45px 45px 45px;
+border: 0px solid #000000;
+
+-webkit-box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
+box-shadow: 7px 7px 3px 0px rgba(219, 216, 216, 0.75);
+}
+.header-progress-bar-box
+{
+  border-radius: 10px;
+  background-color: #00BFD5;
+  min-height: 12px;
+}
+
+.header-progress-bar
+{
+  padding: 0%;
+    background-color: #F3F3F3;
+    min-height: 12px;
+    border-radius: 10PX;
+}
+.custom_heading
+{
+    background-color: #00B4CC;
+    min-height: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 15PX;
+}
+.sidebar_round
+{
+  border-radius: 30px;
+  background-image: linear-gradient(to bottom, #95C790, #9ECDED);
+  min-height: 70vh;
+  margin-top: 8px;
+}
+
+.padding_0
+{
+    padding: 0px;
+
+}
+.side_bar
+{
+  position: fixed;
+  bottom:0px;
+  z-index:300px;
+}
+.padding_right_0
+{
+    padding-right: 0px;
+}
+
+.btn-default
+{
+    background-image: linear-gradient(to right, #55A7F0, #409B39);
+    color: white;
+    border-radius: 20px;
+    min-width: 120px;
+}
+.btn-default:hover
+{
+    color: aliceblue;
+}
+.btn-default:focus
+ {
+   outline:0;
+  }
+.chx{
+  cursor:default;
+  border:1px solid red;
+  background:yellow;
+}
+.clear {
+	clear: both; /* you can either use left or right */
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 60px;
+    cursor: pointer;
+}
+.image-upload-small > input
+{
+    display: none;
+}
+
+.image-upload-small img
+{
+    width: 36px;
+    cursor: pointer;
+}
+hr
+ {
+  border: none;
+  height: 1.2px;
+  /* Set the hr color */
+  color: #333; /* old IE */
+  background-color: orangered; /* Modern Browsers */
+}
+
+
+.progress-bar-vertical {
+  width: 25px;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 40px;
+  float: left;
+  margin-right: 20px;
+  color: #409B39;
+}
+
+.progress-bar-vertical .progress-bar {
+  width: 100%;
+  height: 0;
+  -webkit-transition: height 0.6s ease;
+  -o-transition: height 0.6s ease;
+  transition: height 0.6s ease;
+  background-image: linear-gradient( #E6C543, #E05267);
+  border-radius: 5px;
+
+}
+.progress
+{
+  background-color: #E2E2E2;
+}
+
+.customLegend {
+  border: 1px solid orangered;
+  position: relative;
+  padding-top: 10px;
+  border-radius: 20px;
+}
+
+.list_none {
+  list-style-type: none;
+}
+
+.margin_bottom_25
+{
+  margin-bottom: 30%;
+}
+
+
+
+
+.font-color-blue
+{
+  color: #00BFD5;
+}
+.font-color-brown
+{
+  color: #6E6E6E;
+
+}
+/* ////////Home page///// */
+.home_icon
+{
+
+max-height: 120px;
+}
+.quot_icon
+{
+min-width: 160px;
+min-height: 120px;
+border: solid #4CA748 1.3px;
+border-radius: 0 20px 20px 20px
+}
+.quot_icon hr
+{
+  border: none;
+  height: 2px;
+  color: #333; /* old IE */
+  background-color: #71C4EE; /* Modern Browsers */
+  margin: 0em;
+}
+
+
+/* /////Input Bottom Border Only */
+input[type="text"],[type="email"],[type="password"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding-left: 0%;
+}
+
+input[type="text"]:focus,[type="email"]:focus,[type="password"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+/* //Meterial Design// */
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:30px; 
+}
+.group input 				{
+  font-size:15px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+.group input:focus 		{ outline:none; }
+
+
+.group select 				{
+  font-size:15px;
+  /* padding:10px 10px 10px 5px; */
+  display:block;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+.group select:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.group label 				 {
+  color:#999; 
+  font-size:15px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:0px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+.group input:focus ~ label, input:valid ~ label 		{
+  top:-14px;
+  font-size:15px;
+  color:#00BFD5;
+}
+.group select:focus ~ label, select:valid ~ label 		{
+  top:-14px;
+  font-size:15px;
+  color:#00BFD5;
+}
+
+/* BOTTOM BARS ================================= */
+.group .bar 	{ position:relative; display:block; width:100%px; }
+.group .bar:before, .bar:after 	{
+  content:'';
+  height:1px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.3s ease all; 
+  -moz-transition:0.3s ease all; 
+  -webkit-transition:0.3s ease all;
+}
+.group .bar:before {
+  left:50%;
+}
+.group .bar:after {
+  right:50%; 
+}
+
+/* active state */
+.group input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+/* active state */
+.group select:focus ~ .bar:before, select:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.group .highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:22%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+.group input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* active state */
+.group select:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+
+
+/* The customcheck */
+.customcheck {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.customcheck input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 1px;
+  border: 2px solid #007192;
+}
+
+/* On mouse-over, add a grey background color */
+.customcheck:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.customcheck input:checked ~ .checkmark {
+  background-color: #02cf32;
+  border-radius: 5px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.customcheck input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.customcheck .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+.jumbotron {
+ background-color: transparent;
+}
+
+.jumbotron p{
+  font-size: 14px;
+ }
+
+ .customLabel
+ {
+  font-size:15px;
+  color:#00BFD5;
+
+ }
+
+ 

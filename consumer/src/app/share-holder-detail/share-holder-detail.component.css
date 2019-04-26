@@ -1,0 +1,17 @@
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+  display: none;
+}
+
+input:-moz-read-only { /* For Firefox */
+  background-color: transparent;
+}
+
+input:read-only {
+  background-color: transparent;
+}
+

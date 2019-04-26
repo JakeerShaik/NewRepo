@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<div class="row">
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+    </div>
+    <div class="col-lg-9">
+
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-6">
+                <h2 class="text-center title-color" style="font-weight: bold">View My Applications</h2>
+<alert></alert>
+</div>
+            </div>
+            <div class="col-lg-12"  *ngIf="existingLoan">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-6">
+                        <p>&nbsp;</p>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Sr.</th>
+                            <th>Loan Application</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <!-- <th>Status</th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let loan of existingLoan ;let i = index">
+                            <td>{{i+1}}</td>
+                            <td><button class="btn btn-primary" value="{{loan.applicantionId}}" (click)="selectAppid($event.target.value)">{{loan.applicantionId}} </button></td>
+                            <td>{{loan.createdDate | date: 'dd-MM-yyyy HH:mm:ss'}}</td>
+                            <td *ngIf="loan.applicationStatus==0">Created </td>
+                            <td *ngIf="loan.applicationStatus==1">Pending </td>
+                            <td *ngIf="loan.applicationStatus==2">Completed </td>
+                            <td *ngIf="loan.applicationStatus==3">Open for Amendment</td>
+                          </tr>      
+                         
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col-lg-3"></div>
+        </div>
+        <div class="col-lg-12 text-center">
+            <input type="button" style="margin-top: 5px; border-radius: 20px;" class="btn btn-primary" value="Apply a new loan" (click)="newLoanExistingUser()">
+        </div>
+        </div>
+    </div>
+</div>

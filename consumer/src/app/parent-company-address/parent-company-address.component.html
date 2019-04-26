@@ -1,0 +1,213 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-lg-12 custom_heading">APPLICATION :</div>
+</div>
+<div class="row">
+
+  <div class="col-lg-3 sidebar_round text-center" id="sidebar">
+    <!-- <img src="./assets/images/sidebar.png" class="img-responsive"> -->
+    <p>&nbsp;</p>
+    <div class="col-lg-4">
+        <div class="progress progress-bar-vertical">
+          <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="height: 70%;">
+    
+          </div>
+        </div>
+    </div>
+    <app-sidebar-label></app-sidebar-label>
+  </div>
+  <div class="col-lg-9">
+    <div class="col-lg-9">
+      <p> &nbsp;</p>
+   
+      <form class="form-horizontal" [formGroup]=''  novalidate>
+          <div class="col-lg-10 ">
+              <div class="col-lg-5"><Label>Building Name<span class="error-astrix"> *</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Building Name">
+                      <!-- <div *ngIf=" (FirstName.dirty || isSubmitted) && FirstName.invalid">
+                              <div class="error-msg" *ngIf="FirstName.errors.required">Enter First Name</div>
+                              <div class="error-msg" *ngIf="FirstName.errors.minlength">First Name should be minimum {{FirstName.errors.minlength.requiredLength}} character</div>
+                              <div class="error-msg" *ngIf="FirstName.errors.pattern">Only Alphabets</div>
+                              <div class="error-msg" *ngIf="FirstName.errors.maxlength">First Name should be maximum {{FirstName.errors.maxlength.requiredLength}} character</div>
+
+                          </div> -->
+                  </div>
+                 
+              </div>
+          </div>
+
+          <div class="col-lg-10">
+              <div class="col-lg-5"><Label>Unit Number <span class="error-astrix">*</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Unit Number">
+                      <!-- <div *ngIf=" (LastName.dirty || isSubmitted) && LastName.invalid">
+                              <div class="error-msg" *ngIf="LastName.errors.required">Enter Last Name</div>
+                              <div class="error-msg" *ngIf="LastName.errors.minlength">Last Name should be minimum {{LastName.errors.minlength.requiredLength}} character</div>
+                              <div class="error-msg" *ngIf="LastName.errors.pattern">Only Alphabets</div>
+                              <div class="error-msg" *ngIf="LastName.errors.maxlength">Last Name should be maximum {{LastName.errors.maxlength.requiredLength}} character</div>
+
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-5"><Label>Area/Locality <span class="error-astrix">*</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Area/Locality">
+                      <!-- <div *ngIf=" (applicantEmailId.dirty || isSubmitted) && applicantEmailId.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="applicantEmailId.errors.required">Enter Email</div>
+                              <div class="error-msg" *ngIf="applicantEmailId.errors.email">Enter valid Email</div>
+                              <div class="error-msg" *ngIf="applicantEmailId.errors.minlength">Email should be minimum {{applicantEmailId.errors.minlength.requiredLength}} character</div>
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-5 "><label>Street Number/Name <span class="error-astrix">*</span></label> </div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Street Number/Name">
+                      <!-- <div *ngIf=" (applicantPassword.dirty || isSubmitted) && applicantPassword.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="applicantPassword.errors.required">Enter Password</div>
+                              <div class="error-msg" *ngIf="applicantPassword.errors.minlength">Password should be minimum {{applicantPassword.errors.minlength.requiredLength}} character</div>
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+            <div class="col-lg-5"><Label>Landmark <span class="error-astrix">*</span></Label></div>
+            <div class="col-lg-7">
+                <div class="form-group">
+                    <input type="text" formControlName="" class="form-control" placeholder="Enter Landmark">
+                    <!-- <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                            <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                        </div> -->
+                </div>
+            </div>
+        </div>
+          <div class="col-lg-10">
+              <div class="col-lg-5"><Label>Emirate/City <span class="error-astrix">*</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <select formControlName="" class="form-control">
+                          <option value="">Select Emirate/City</option>
+                        
+
+                        </select>
+                      <!-- <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                              <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+   
+          <div class="col-lg-10">
+              <div class="col-lg-5"><Label>Telephone (Office) <span class="error-astrix">*</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Telephone (Office)">
+                      <!-- <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                              <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-5"><Label>Telephone (Home) <span class="error-astrix">*</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Telephone (Home)">
+                    
+                      <!-- <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                              <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-5"><Label>Fax No.<span class="error-astrix">*</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Fax Number">
+                      <!-- <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                              <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-5"><Label>Email (Office) <span class="error-astrix">*</span></Label></div>
+              <div class="col-lg-7">
+                  <div class="form-group">
+                      <input type="text" formControlName="" class="form-control" placeholder="Enter Email (Office)">
+                      <!-- <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                              <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                          </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+            <div class="col-lg-5"><Label>Email (Office) <span class="error-astrix">*</span></Label></div>
+            <div class="col-lg-7">
+                <div class="form-group">
+                    <input type="text" formControlName="" class="form-control" placeholder="Enter Email (Office)">
+                    <!-- <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                            <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                        </div> -->
+                </div>
+            </div>
+        </div>
+          
+          
+          
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="clear"></div>
+              <p>&nbsp; </p>
+              <p> &nbsp;</p>
+
+              <div class="col-lg-4 col-md-3 col-sm-3">
+                  <div class="form-group">
+                      <input type="submit" class="btn btn-default btn-lg"  value="Save & Continue">
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-3 col-sm-3">
+                  <div class="form-group">
+                      <input type="button" class="btn btn-default btn-lg"  value="Save & Exit">
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-3 col-sm-3">
+                  <div class="form-group">
+                      <input type="button" class="btn btn-default btn-lg"  value="Exit without saving">
+                  </div>
+              </div>
+           
+
+          </div>
+
+      </form>
+
+  </div>
+  <div class="col-lg-3">
+    <p>&nbsp;</p>
+    <div class="btn-group-vertical col-lg-12" >
+  
+        <button type="button"  class="btn  btn-lg font-11" value="1">Billing & Communication Address</button>
+        <button type="button" class="btn  btn-lg font-11" value="1">Registered office Address</button>
+        <button type="button" class="btn btn-default btn-lg font-11" value="1">Parent Company Address</button>
+      
+      </div>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,213 @@
+<app-header></app-header>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+    </div>
+    <div class="col-lg-9">
+        <p> &nbsp;</p>
+        <div class="col-lg-12">
+
+            <div class="col-lg-8 text-center">
+                <h2 class="title-color">Quick Sign Up</h2>
+
+            </div>
+            <div class="col-lg-2"></div>
+
+        </div>
+
+        <div class="col-lg-12">
+            <div class="col-lg-8">
+                <p class="text-center font-color-brown">Signing up helps you to come back to your application any time</p>
+                <p>&nbsp;</p>
+
+            </div>
+            <div class="col-lg-2"></div>
+
+        </div>
+        <form class="form-horizontal" [formGroup]='Form_basic_detail' (ngSubmit)="registerApplicant()" novalidate>
+
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <alert></alert>
+
+                    <div class="floating-label form-group ">
+                        <input class="floating-input" type="text" formControlName="firstName" placeholder=" ">
+                        <span class="highlight"></span>
+                        <label>First Name (of the applicant)<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (firstName.dirty || isSubmitted) && firstName.invalid">
+                            <div class="error-msg" *ngIf="firstName.errors.required">Enter First Name</div>
+                            <div class="error-msg" *ngIf="firstName.errors.minlength">First Name should be minimum
+                                {{firstName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="firstName.errors.pattern">Only Alphabets</div>
+                            <div class="error-msg" *ngIf="firstName.errors.maxlength">First Name should be maximum
+                                {{firstName.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="text" formControlName="lastName" class="floating-input" placeholder=" ">
+                        <span class="highlight"></span>
+
+                        <label>Last Name<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (lastName.dirty || isSubmitted) && lastName.invalid">
+                            <div class="error-msg" *ngIf="lastName.errors.required">Enter Last Name</div>
+                            <div class="error-msg" *ngIf="lastName.errors.minlength">Last Name should be minimum
+                                {{lastName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="lastName.errors.pattern">Only Alphabets</div>
+                            <div class="error-msg" *ngIf="lastName.errors.maxlength">Last Name should be maximum
+                                {{lastName.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="text" formControlName="companyName" class="floating-input" placeholder=" ">
+                        <span class="highlight"></span>
+
+                        <label>Enter Company Name<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (companyName.dirty || isSubmitted) && companyName.invalid">
+                            <div class="error-msg" *ngIf="companyName.errors.required">Enter Company Name</div>
+                            <div class="error-msg" *ngIf="companyName.errors.minlength">Company Name should be minimum
+                                {{companyName.errors.minlength.requiredLength}} character</div>
+
+                            <div class="error-msg" *ngIf="companyName.errors.maxlength">Company Name should be maximum
+                                {{companyName.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="email" formControlName="applicantEmailId" class="floating-input" placeholder=" ">
+                        <span class="highlight"></span>
+
+                        <label>Email Address<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (applicantEmailId.dirty || isSubmitted) && applicantEmailId.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="applicantEmailId.errors.required">Enter Email</div>
+                            <div class="error-msg" *ngIf="applicantEmailId.errors.pattern">Enter valid Email</div>
+                            <div class="error-msg" *ngIf="applicantEmailId.errors.minlength">Email should be minimum
+                                {{applicantEmailId.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="applicantEmailId.errors.maxlength">Email should be maximum
+                                {{applicantEmailId.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="text" formControlName="mobileNumber" class="floating-input" placeholder=" "
+                            maxlength="10">
+                        <span class="highlight"></span>
+
+                        <label>Mobile Number<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (mobileNumber.dirty || isSubmitted) && mobileNumber.invalid">
+                            <div class="error-msg" *ngIf="mobileNumber.errors.required">Enter Mobile Number</div>
+                            <div class="error-msg" *ngIf="mobileNumber.errors.minlength">Mobile Number should be
+                                minimum {{mobileNumber.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="mobileNumber.errors.pattern">Number Only and start with zero
+                            </div>
+                            <div class="error-msg" *ngIf="mobileNumber.errors.maxlength">Mobile Number should be
+                                maximum {{mobileNumber.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="password" formControlName="applicantPassword" class="floating-input" placeholder=" ">
+                        <span class="highlight"></span>
+
+                        <label>Password (For next use)<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (applicantPassword.dirty || isSubmitted) && applicantPassword.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="applicantPassword.errors.required">Enter Password</div>
+                            <div class="error-msg" *ngIf="applicantPassword.errors.minlength">Password should be
+                                minimum {{applicantPassword.errors.minlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="password" formControlName="confirmPass" class="floating-input" placeholder=" ">
+                        <span class="highlight"></span>
+                        <label>Confirm Password<span class="error-astrix"> *</span></label>
+                        <input type="hidden" formControlName="applicantionId" [value]="">
+                        <input type="hidden" formControlName="applicantControlType">
+
+                        <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                            <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be
+                                minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="confirmPass.errors?.MatchFields">Password not match</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8 text-center">
+           
+                        <input type="submit" class="btn btn-default" value="Save & Continue">               
+             
+</div>
+
+            </div>
+            <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8 text-center">
+                <p>&nbsp; </p>
+                    <a [routerLink]="['/existing-loan-app']"><b>Already have an account? Click here</b></a>
+                </div>
+               
+
+            </div>
+        </form>
+
+    </div>
+
+
+</div>

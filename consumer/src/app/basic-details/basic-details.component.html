@@ -1,0 +1,151 @@
+<app-header></app-header>
+
+
+<div class="row">
+    <div class="col-lg-12 jumbotron">
+        <div class="col-lg-12">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 text-center">
+                <h2>Quick Sign Up</h2>
+            </div>
+            <div class="col-lg-2"></div>
+
+        </div>
+        <div class="col-lg-12">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 text-center">
+                <h4 class=" font-color-blue">&nbsp;&nbsp;&nbsp;&nbsp; Signing up helps you to come back to your application
+                    any
+                    time.</h4>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-9">
+            <p> &nbsp;</p>
+
+            <form class="form-horizontal" [formGroup]='Form_basic_detail' (ngSubmit)="save()" novalidate>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8">
+                        <alert></alert>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-10 ">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="group form-group">
+                        <input type="text" formControlName="firstName" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>First Name</label>
+                        <div *ngIf=" (firstName.dirty || isSubmitted) && firstName.invalid">
+                            <div class="error-msg" *ngIf="firstName.errors.required">Enter First Name</div>
+                            <div class="error-msg" *ngIf="firstName.errors.minlength">First Name should be minimum
+                                {{firstName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="firstName.errors.pattern">Only Alphabets</div>
+                            <div class="error-msg" *ngIf="firstName.errors.maxlength">First Name should be maximum
+                                {{firstName.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+                <!-- 
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <div class="group form-group">
+                        <input type="text" formControlName="lastName" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Last Name</label>
+                        <div *ngIf=" (lastName.dirty || isSubmitted) && lastName.invalid">
+                            <div class="error-msg" *ngIf="lastName.errors.required">Enter Last Name</div>
+                            <div class="error-msg" *ngIf="lastName.errors.minlength">Last Name should be minimum
+                                {{lastName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="lastName.errors.pattern">Only Alphabets</div>
+                            <div class="error-msg" *ngIf="lastName.errors.maxlength">Last Name should be maximum
+                                {{lastName.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8">
+                        <div class="group form-group">
+                            <input type="email" formControlName="applicantEmailId" required class="form-control">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Email Address<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (applicantEmailId.dirty || isSubmitted) && applicantEmailId.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="applicantEmailId.errors.required">Enter Email</div>
+                                <div class="error-msg" *ngIf="applicantEmailId.errors.pattern">Enter valid Email</div>
+                                <div class="error-msg" *ngIf="applicantEmailId.errors.minlength">Email should be
+                                    minimum
+                                    {{applicantEmailId.errors.minlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8">
+                        <div class="group form-group">
+                            <input type="password" formControlName="applicantPassword" required class="form-control">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Password<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (applicantPassword.dirty || isSubmitted) && applicantPassword.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="applicantPassword.errors.required">Enter Password</div>
+                                <div class="error-msg" *ngIf="applicantPassword.errors.minlength">Password should be
+                                    minimum {{applicantPassword.errors.minlength.requiredLength}} character</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8">
+                        <div class="group form-group">
+                            <input type="password" formControlName="confirmPass" required class="form-control">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Confirm Password<span class="error-astrix"> *</span></label>
+                            <div *ngIf=" (confirmPass.dirty || isSubmitted) && confirmPass.invalid" class=" error-msg">
+                                <div class="error-msg" *ngIf="confirmPass.errors.required">Enter Confirm Password</div>
+                                <div class="error-msg" *ngIf="confirmPass.errors.minlength">Confirm Password should be
+                                    minimum {{confirmPass.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="confirmPass.errors?.MatchFields">Password not match</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <p>&nbsp; </p>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-2 text-center">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default"  value="Save & Continue"
+                                [disabled]="!Form_basic_detail.valid">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12">
+
+                    <p>&nbsp; </p>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4 text-center">
+                        <a [routerLink]="['/existing-loan-app']"><label class="hover_mouse font-color-blue">Already
+                                have an account? Click here </label></a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

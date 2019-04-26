@@ -1,0 +1,14 @@
+.custom-label
+{
+
+    font-size:15px;
+    color:#00BFD5;
+}
+
+input:-moz-read-only { /* For Firefox */
+    background-color: transparent;
+  }
+  
+  input:read-only { 
+    background-color: transparent;
+  }

@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar text-center">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Personal Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Address Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Employer Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Bank Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Complete</div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+<!-- 
+  <div class="col-lg-3 padding_0" id="sidebar">
+    <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+  </div> -->
+  <div class="col-lg-12">
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <!-- <alert></alert> -->
+
+    <div class="col-lg-12">
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-8 text-center">
+        <h1>You are a step closer to get your loan</h1>
+
+      </div>
+      <div class="col-lg-2"></div>
+
+    </div>
+    <p>&nbsp;</p>
+<div class="col-lg-12">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 text-center">
+        <alert></alert>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+    <div class="col-lg-12">
+      <div class="col-lg-4"></div>        
+      <div class="col-lg-4">
+                    <label class="customcheck font-color-brown">I have read the <a [routerLink]="['/terms-condition']" target="_blank" class="font-color-brown" style="text-decoration: underline"> Terms and Conditions</a>
+                            <input type="checkbox" (click)="checkBox($event)">
+                            <span class="checkmark"></span>
+                          </label>
+        
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+
+    <div class="col-lg-12">
+      <div class="col-lg-5"></div>
+        <div class="col-lg-3">
+         
+              <div class="form-group">
+                 <input type="button" class="btn btn-default" value="Done" [disabled]="selected" (click)="LoanSubmitData()">
+            </div>
+        
+        </div>
+        <div class="col-lg-1"></div>
+      </div>
+  </div>
+
+
+</div>

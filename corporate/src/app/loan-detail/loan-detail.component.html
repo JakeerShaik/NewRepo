@@ -1,0 +1,153 @@
+<app-header></app-header>
+
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Financials</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Company Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Borrower Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Address Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Bank Details</div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+    </div>
+    <div class="col-lg-9">
+        <p> &nbsp;</p>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <h2 class="title-color">Where do you want us to transfer the loan?</h2>
+                </div>
+            </div>
+        </div>
+        <p> &nbsp;</p>
+    
+        <form class="form-horizontal" [formGroup]='loan_detail' novalidate>
+
+            <div class="col-lg-10">
+                <div class="col-lg-2 "></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="text" formControlName="applicantLoanIBan" class="floating-input" placeholder=" " maxlength="23">
+                        <span class="highlight"></span>
+              
+                        <label>Account Number/IBAN<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (applicantLoanIBan.dirty || isSubmitted) && applicantLoanIBan.invalid">
+                                <div class="error-msg" *ngIf="applicantLoanIBan.errors.pattern">Add AE Starting of Account Number/IBAN followed by 21 Numeric value</div>
+                            <div class="error-msg" *ngIf="applicantLoanIBan.errors.required">Enter Account Number/IBAN</div>
+                            <div class="error-msg" *ngIf="applicantLoanIBan.errors.minlength">Account Number/IBAN
+                                should be minimum {{applicantLoanIBan.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="applicantLoanIBan.errors.maxlength">Account Number/IBAN
+                                should be maximum {{applicantLoanIBan.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <!-- <input type="text" formControlName="applicantLoanBankId" class="floating-input" placeholder=" "> -->
+                        <select formControlName="applicantLoanBankId" class="floating-select" >
+                           <option value="" selected>Select Bank</option>
+                                <option *ngFor="let banklists of banklist" [value]="banklists.bankCode">{{banklists.bankName}}</option>
+                        
+                            </select>
+                        <span class="highlight"></span>
+                        <label>Bank Name<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (applicantLoanBankId.dirty || isSubmitted) && applicantLoanBankId.invalid">
+                            <div class="error-msg" *ngIf="applicantLoanBankId.errors.required">Enter Account Bank Name</div>
+                            <div class="error-msg" *ngIf="applicantLoanBankId.errors.minlength">Bank Name should be
+                                minimum {{applicantLoanBankId.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="applicantLoanBankId.errors.maxlength">Bank Name should be
+                                maximum {{applicantLoanBankId.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="text" formControlName="applicantLoanBranch" class="floating-input" placeholder=" ">
+                       
+                        <span class="highlight"></span>
+                        <label>Branch<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (applicantLoanBranch.dirty || isSubmitted) && applicantLoanBranch.invalid">
+                            <div class="error-msg" *ngIf="applicantLoanBranch.errors.required">Enter Branch</div>
+                            <div class="error-msg" *ngIf="applicantLoanBranch.errors.minlength">Branch Name should be
+                                    minimum {{applicantLoanBranch.errors.minlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="applicantLoanBranch.errors.maxlength">Branch Name should be
+                                    maximum {{applicantLoanBranch.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="floating-label form-group">
+                        <input type="hidden" formControlName="applicationId" value="">
+                        <input type="text" formControlName="applicantLoanAccountTitle" class="floating-input" placeholder=" ">
+                        <span class="highlight"></span>
+                        
+                        <label>Account Title<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (applicantLoanAccountTitle.dirty || isSubmitted) && applicantLoanAccountTitle.invalid">
+                            <div class="error-msg" *ngIf="applicantLoanAccountTitle.errors.required">Enter Account
+                                Title</div>
+                            <div class="error-msg" *ngIf="applicantLoanAccountTitle.errors.minlength">Account Title
+                                should be minimum {{applicantLoanAccountTitle.errors.minlength.requiredLength}}
+                                character</div>
+                            <div class="error-msg" *ngIf="applicantLoanAccountTitle.errors.maxlength">Account Title
+                                should be maximum {{applicantLoanAccountTitle.errors.maxlength.requiredLength}}
+                                character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="clear"></div>
+                <p>&nbsp; </p>
+            
+                <div class="col-lg-2 col-md-3 col-sm-3">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-default" (click)="save('saveandcont')" value="Save & Continue">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-default" value="Save & Exit">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"></div>
+            </div>
+        </form>
+    </div>
+</div>

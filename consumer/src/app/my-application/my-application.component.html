@@ -1,0 +1,44 @@
+<app-header></app-header>
+<p>&nbsp;</p>
+<div class="row">
+    <div class="col-lg-2 padding_0" id="sidebar">
+        <!-- <img src="./assets/images/sideLeft.png" class="img-responsive side_bar"> -->
+    </div>
+    <div class="col-lg-12">
+<h2 class="text-center" style="font-weight: bold"> My Applications</h2>
+    </div>
+        <div class="col-lg-12"  *ngIf="existingLoan">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                    <p>&nbsp;</p>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Sr.</th>
+                        <th>Loan Reference</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let loan of existingLoan ;let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{loan.loanReferenceNum}}</td>
+                        <td>{{loan.approvedBySystemAt | date: 'dd-MM-yyyy HH:mm:ss'}}</td>
+                        <td *ngIf="loan.approvedBySystem==-1">Rejected </td>
+                        <td *ngIf="loan.approvedBySystem==1">Approved </td>
+                      </tr>      
+                     
+                    </tbody>
+                  </table>
+            </div>
+            <div class="col-lg-3"></div>
+    </div>
+    <div class="col-lg-12 text-center" *ngIf="loanAvail">
+            <label class="text-danger">No Existing Applied Loan Found</label>
+            <p>&nbsp;</p>
+            <div class="form-group">
+                <input type="button" [routerLink]="['/product']" class="btn btn-default" value="Click to Apply New Loan">
+            </div>
+            </div>
+</div>

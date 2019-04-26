@@ -1,0 +1,439 @@
+
+<app-header></app-header>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Personal Details</div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 jumbotron">
+        <div class="col-lg-12">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-9 text-center">
+                <h2>Tell us more about yourself</h2>
+            </div>
+          
+        </div>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-9">
+            <p> &nbsp;</p>
+        <form class="form-horizontal" [formGroup]='Personal_detail' novalidate>
+            <div class="col-lg-10 ">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <alert></alert>
+                    <div class="group form-group">
+                        <select formControlName="title" required class="form-control">
+                            <!-- <option value="">Select Title<span class="error-astrix"> *</span></option> -->
+                            <option value="Mr">Mr.</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Mrs">Mrs.</option>
+                            <option value="Prof">Prof.</option>
+                            <option value="Dr">Dr.</option>
+                        </select>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Title<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (title.dirty || isSubmitted) && title.invalid">
+                            <div class="error-msg" *ngIf="title.errors.required">Select Title</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="firstName" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>First Name<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (firstName.dirty || isSubmitted) && firstName.invalid">
+                            <div class="error-msg" *ngIf="firstName.errors.required">Enter First Name</div>
+                            <div class="error-msg" *ngIf="firstName.errors.minlength">First Name should be minimum
+                                {{firstName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="firstName.errors.pattern">Only Alphabets</div>
+                            <div class="error-msg" *ngIf="firstName.errors.maxlength">First Name should be maximum
+                                {{firstName.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="middleName" required="false" class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Middle Name</label>
+                        <div *ngIf=" (middleName.dirty || isSubmitted) && middleName.invalid">
+                            <div class="error-msg" *ngIf="middleName.errors.required">Enter Middle Name</div>
+                            <div class="error-msg" *ngIf="middleName.errors.minlength">Middle Name should be minimum
+                                {{middleName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="middleName.errors.pattern">Only Alphabets</div>
+                            <div class="error-msg" *ngIf="middleName.errors.maxlength">Middle Name should be maximum
+                                {{middleName.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="lastName" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Last Name<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (lastName.dirty || isSubmitted) && lastName.invalid">
+                            <div class="error-msg" *ngIf="lastName.errors.required">Enter Last Name</div>
+                            <div class="error-msg" *ngIf="lastName.errors.minlength">Middle Name should be minimum
+                                {{lastName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="lastName.errors.pattern">Only Alphabets</div>
+                            <div class="error-msg" *ngIf="lastName.errors.maxlength">Last Name should be maximum
+                                {{lastName.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                        <div class="group form-group">
+                        <select formControlName="gender" required class="form-control">
+                            <!-- <option value="">Select Gender<span class="error-astrix"> *</span></option> -->
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Gender<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (gender.dirty || isSubmitted) && gender.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="gender.errors.required">Select Gender</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group"> -->
+                        <input type="hidden" formControlName="email" class="form-control">
+                        <!-- <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Email id</label> -->
+                        <div *ngIf=" (email.dirty || isSubmitted) && email.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="email.errors.required">Enter Email</div>
+                            <div class="error-msg" *ngIf="email.errors.pattern">Enter valid Email</div>
+                            <div class="error-msg" *ngIf="email.errors.minlength">Email should be minimum
+                                {{email.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="email.errors.maxlength">Email should be maximum
+                                {{email.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    <!-- </div>
+                </div>
+            </div> -->
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <!-- <input type="text" formControlName="dob" required class="form-control">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Date of Birth</label> -->
+                      <span class="customLabel">Date of Birth<span class="error-astrix"> *</span></span>
+
+                      <input type="text" placeholder="Select Date of Birth"
+                      [max]="max"
+                      [min]="maxdate"
+                      [owlDateTimeTrigger]="dob" [owlDateTime]="dob" formControlName="dob" class="form-control" readonly>
+               <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #dob></owl-date-time>
+                        <!-- <my-date-picker class="mydate" placeholder="Select Date of Birth" [options]="dobOptions"
+                            formControlName="dob"></my-date-picker> -->
+                        <div *ngIf=" (dob.dirty || isSubmitted) && dob.invalid">
+                            <div class="error-msg" *ngIf="dob.errors.required">Enter Date of Birth</div>
+                            <div class="error-msg" *ngIf="dob.errors.minlength">Date of Birth should be minimum
+                                {{dob.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="dob.errors.maxlength">Date of Birth should be maximum
+                                {{dob.errors.maxlength.requiredLength}} character</div>
+                                <div  class="error-msg" *ngIf="dob.errors.owlDateTimeMax">
+                                    Date of birth must be before {{max | date: 'dd-MM-yyyy'}}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="mobile" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Mobile Number<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (mobile.dirty || isSubmitted) && mobile.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="mobile.errors.required">Enter Mobile Number</div>
+                            <div class="error-msg" *ngIf="mobile.errors.minlength">Mobile Number should be minimum
+                                {{mobile.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="mobile.errors.maxlength">Mobile Number should be Maximum
+                                {{mobile.errors.maxlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="mobile.errors.pattern">Number Only and start with zero </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <select formControlName="maritalStatus" required class="form-control">
+                            <!-- <option value="">Marital Status<span class="error-astrix"> *</span></option> -->
+                            <option value="Married">Married</option>
+                            <option value="Unmarried">Unmarried</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                          <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Marital Status <span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (maritalStatus.dirty || isSubmitted) && maritalStatus.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="maritalStatus.errors.required">Select Marital Status</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="emiratesId" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>EID Number<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (emiratesId.dirty || isSubmitted) && emiratesId.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="emiratesId.errors.required">Enter EID Number</div>
+                            <div class="error-msg" *ngIf="emiratesId.errors.minlength">EID Number should be minimum
+                                {{emiratesId.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="emiratesId.errors.maxlength">EID Number should be Maximum
+                                {{emiratesId.errors.maxlength.requiredLength}} character</div>
+                            <!-- <div class="error-msg" *ngIf="mobile.errors.pattern">Number Only </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <!-- <input type="text" formControlName="eidExpDate" required class="form-control">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Expiry date of EID</label> -->
+                      <span class="customLabel">Expiry date of EID<span class="error-astrix"> *</span></span>
+                      <input type="text" placeholder="Select Expiry date of EID"
+                   
+                      [min]="min"
+                      [owlDateTimeTrigger]="eidexp" [owlDateTime]="eidexp" formControlName="eidExpDate" class="form-control" readonly>
+               <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #eidexp></owl-date-time>
+                        <!-- <my-date-picker placeholder="Select Expiry date of EID" name="eidExpDate" [options]="myDatePickerOptions"
+                            formControlName="eidExpDate"></my-date-picker> -->
+                        <div *ngIf=" (eidExpDate.dirty || isSubmitted) && eidExpDate.invalid">
+                            <div class="error-msg" *ngIf="eidExpDate.errors.required">Enter Expiry date of EID</div>
+                            <div class="error-msg" *ngIf="eidExpDate.errors.minlength">Expiry date of EID should be
+                                minimum {{eidExpDate.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="eidExpDate.errors.maxlength">Expiry date of EID should be
+                                maximum {{eidExpDate.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="eidExpDate.errors.owlDateTimeMin">
+                                    Expiry date must be older than today's date
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <select formControlName="nationality" required class="form-control" >
+                            <!-- <option value="">Nationality<span class="error-astrix"> *</span></option> -->
+                            <option *ngFor="let countryLists of countryList" [value]="countryLists.code3">{{countryLists.name}}</option>
+                        </select>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Nationality <span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (nationality.dirty || isSubmitted) && nationality.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="nationality.errors.required">Select Nationality</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="passportNum" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Passport number<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (passportNum.dirty || isSubmitted) && passportNum.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="passportNum.errors.required">Enter Passport Number</div>
+                            <div class="error-msg" *ngIf="passportNum.errors.minlength">Passport Number should be
+                                minimum {{passportNum.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="passportNum.errors.maxlength">Passport Number should be
+                                Maximum {{passportNum.errors.maxlength.requiredLength}} character</div>
+                            <!-- <div class="error-msg" *ngIf="mobile.errors.pattern">Number Only </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <!-- <input type="text" formControlName="passportExpDate" required class="form-control">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Passport Expiry date (Only for non-UAE)</label> -->
+                      <span class="customLabel">Passport Expiry date<span class="error-astrix"> *</span></span>
+                      <input type="text" placeholder="Passport Expiry date"
+                     
+                      [min]="min"
+                      [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" formControlName="passportExpDate" class="form-control" readonly>
+               <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #dt2></owl-date-time>
+                        <!-- <my-date-picker placeholder="Select Passport Expiry date" name="passportExpDate"
+                            [options]="myDatePickerOptions" formControlName="passportExpDate"></my-date-picker> -->
+                        <div *ngIf=" (passportExpDate.dirty || isSubmitted) && passportExpDate.invalid">
+                            <div class="error-msg" *ngIf="passportExpDate.errors.required">Enter Expiry date of
+                                Passport</div>
+                            <div class="error-msg" *ngIf="passportExpDate.errors.minlength">Expiry date of Passport
+                                should be minimum {{passportExpDate.errors.minlength.requiredLength}} character</div>
+
+                            <div class="error-msg" *ngIf="passportExpDate.errors.maxlength">Expiry date of Passport
+                                should be maximum {{passportExpDate.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="passportExpDate.errors.owlDateTimeMin">
+                                    Expiry date must be older than today's date
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="visaId" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Visa number (Only for non-UAE)</label>
+                        <div *ngIf=" (visaId.dirty || isSubmitted) && visaId.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="visaId.errors.required">Enter Visa Number</div>
+                            <div class="error-msg" *ngIf="visaId.errors.minlength">Visa Number should be minimum
+                                {{visaId.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="visaId.errors.maxlength">Visa Number should be Maximum
+                                {{visaId.errors.maxlength.requiredLength}} character</div>
+                            <!-- <div class="error-msg" *ngIf="mobile.errors.pattern">Number Only </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="form-group example-wrapper">
+                        <!-- <input type="text" formControlName="visaExpDate" required class="form-control">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Visa Expiry Date</label> -->
+                      <span class="customLabel">Visa Expiry Date</span>
+                      <input type="text" placeholder="Visa Expiry Date"
+                     
+                      [min]="min"
+                      [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" formControlName="visaExpDate" class="form-control" readonly>
+               <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #dt1></owl-date-time>
+       
+                        <!-- <my-date-picker placeholder="Select Visa Expiry Date (Only for non-UAE)" name="visaExpDate"
+                            [options]="myDatePickerOptions" formControlName="visaExpDate"></my-date-picker> -->
+                        <div *ngIf=" (visaExpDate.dirty || isSubmitted) && visaExpDate.invalid">
+                            <div class="error-msg" *ngIf="visaExpDate.errors.required">Enter Expiry date of Visa</div>
+                            <div class="error-msg" *ngIf="visaExpDate.errors.minlength">Expiry date of Visa should be
+                                minimum {{visaExpDate.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="visaExpDate.errors.maxlength">Expiry date of Visa should be
+                                maximum {{visaExpDate.errors.maxlength.requiredLength}} character</div>
+                                <div class="error-msg" *ngIf="visaExpDate.errors.owlDateTimeMin">
+                                    Expiry date must be older than today's date
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="uaeResidentialAddress" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>UAE Residential address<span class="error-astrix"> *</span></label>
+                        <div *ngIf=" (uaeResidentialAddress.dirty || isSubmitted) && uaeResidentialAddress.invalid">
+                            <div class="error-msg" *ngIf="uaeResidentialAddress.errors.required">Enter Address</div>
+                            <div class="error-msg" *ngIf="uaeResidentialAddress.errors.minlength">Address should be
+                                minimum {{uaeResidentialAddress.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="uaeResidentialAddress.errors.maxlength">Address should be
+                                maximum {{uaeResidentialAddress.errors.maxlength.requiredLength}} character</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="clear"></div>
+                <p>&nbsp; </p>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-default" (click)="personalDatasave('cont')" value="Continue">
+                        <!-- [disabled]="!Personal_detail.valid" -->
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2">
+               
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-default" [routerLink]="['/document-upload']" value="Back">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

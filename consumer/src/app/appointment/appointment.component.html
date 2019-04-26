@@ -1,0 +1,167 @@
+<app-header></app-header>
+<style>
+.owl-dt-container {
+ 
+    font-size: 2rem;
+}
+</style>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Personal Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Address Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Employer Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Bank Details</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">Complete</div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+
+
+    <p>&nbsp;</p>
+    <div class="col-lg-12">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-9 text-center">
+            <h2>Let's get to know each other better (KYC Validation)</h2>
+
+        </div>
+        <!-- <div class="col-lg-1"></div> -->
+
+    </div>
+    <p>&nbsp;</p>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9">
+        <form class="form-horizontal" [formGroup]='appoinmentForm' novalidate>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <alert></alert>
+                    <div class="form-group">
+                      <span class="customLabel">From date<span class="error-astrix"> *</span></span>
+                        <!-- <input type="text" formControlName="fromDate" required class="form-control"> -->
+                        <!-- <my-date-picker placeholder="Select From date" name="dated" [options]="myDatePickerOptions"
+                            formControlName="fromDate"></my-date-picker> -->
+
+                            <input type="text" placeholder="Select from Date"
+                            [min]="min"
+                            [owlDateTimeTrigger]="fromdate" [owlDateTime]="fromdate" formControlName="fromDate" class="form-control" readonly>
+                     <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #fromdate></owl-date-time>
+                        <!-- <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>From Date</label> -->
+                        <div *ngIf=" (fromDate.dirty || isSubmitted) && fromDate.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="fromDate.errors.required">Select From Date</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <!-- <input type="text" formControlName="toDate" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>To Date</label> -->
+                      <span class="customLabel">To date<span class="error-astrix"> *</span></span>
+
+                        <input type="text" placeholder="Select To Date"
+                        [min]="tomin"
+                        [owlDateTimeTrigger]="todate" [owlDateTime]="todate" formControlName="toDate" class="form-control" readonly>
+                 <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #todate></owl-date-time>
+                        <!-- <my-date-picker placeholder="Select To date" name="toDate" [options]="myDatePickerOptions"
+                            formControlName="toDate"></my-date-picker> -->
+                        <div *ngIf=" (toDate.dirty || isSubmitted) && toDate.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="toDate.errors.required">Select To Date</div>
+                            <div class="error-msg" *ngIf="toDate.errors.owlDateTimeMin">
+                               To Date Should be greater then from Date
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <span class="customLabel">From Time<span class="error-astrix"> *</span></span>
+                        <!-- <input type="text"
+                        [owlDateTimeTrigger]="fromTime" [owlDateTime]="fromTime" formControlName="fromTime" class="form-control" readonly>
+                 <owl-date-time [pickerType]="'timer'" #fromTime></owl-date-time> -->
+                        <input type="time" formControlName="fromTime" required class="form-control">
+
+                        <!-- <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>From Time</label> -->
+                        <div *ngIf=" (fromTime.dirty || isSubmitted) && fromTime.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="fromTime.errors.required">Select From Time</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                 <span class="customLabel">To Time<span class="error-astrix"> *</span></span>
+                        <input type="time" formControlName="toTime" required class="form-control">
+                        <!-- <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>To Time</label> -->
+                        <div *ngIf=" (toTime.dirty || isSubmitted) && toTime.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="toTime.errors.required">Select To Time</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9">
+                    <div class="group form-group">
+                        <input type="text" formControlName="location" required class="form-control">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Location</label>
+                        <div *ngIf=" (location.dirty || isSubmitted) && location.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="location.errors.required">Enter Location</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-3 text-center">
+                <div class="form-group">
+                    <input type="button" class="btn btn-default" (click)=" save()" value="Confirm">
+                </div>
+            </div>
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>

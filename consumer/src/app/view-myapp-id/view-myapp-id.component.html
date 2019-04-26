@@ -1,0 +1,77 @@
+<app-header></app-header>
+<p>&nbsp;</p>
+<div class="row">
+    <div class="col-lg-2 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+    </div>
+    <div class="col-lg-10">
+    
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-8">
+<h2 class="text-center" style="font-weight: bold">VIEW MY APPLICATIONS</h2>
+<p>&nbsp;</p>
+</div>
+<form class="form-horizontal" [formGroup]='view_my_app'   novalidate>
+   
+    <div class="col-lg-10 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
+            <div class="group form-group">
+                <input type="text" formControlName="applicantEmailId" required  class="form-control">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Email ID</label>
+                <div *ngIf=" (applicantEmailId.dirty || isSubmitted) && applicantEmailId.invalid">
+                        <div class="error-msg" *ngIf="applicantEmailId.errors.required">Enter Application ID</div>
+                        <div class="error-msg" *ngIf="applicantEmailId.errors.minlength">Application ID should be minimum {{applicantEmailId.errors.minlength.requiredLength}} character</div>
+                        <div class="error-msg" *ngIf="applicantEmailId.errors.maxlength">Application ID should be maximum {{applicantionId.errors.maxlength.requiredLength}} character</div>
+                    </div>
+            </div>
+           
+        </div>
+    </div>
+
+    <div class="col-lg-10">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
+            <div class="group form-group">
+                <input type="text" formControlName="otp" required class="form-control">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Enter OTP</label>
+                <div *ngIf=" (otp.dirty || isSubmitted) && otp.invalid">
+                        <div class="error-msg" *ngIf="otp.errors.required">Enter OTP</div>
+                        <div class="error-msg" *ngIf="otp.errors.minlength">OTP should be minimum {{otp.errors.minlength.requiredLength}} character</div>
+                        <div class="error-msg" *ngIf="otp.errors.maxlength">OTP should be maximum {{otp.errors.maxlength.requiredLength}} character</div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-2 col-md-2 col-sm-2">
+        </div>     
+        
+        <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="form-group">
+                <input type="button" class="btn btn-default"  value="Proceed">
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="form-group">
+                <input type="button" class="btn btn-default"  value="Cancel">
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            
+        </div>
+
+    </div>      
+        </form>
+            </div>
+        </div>
+    </div>
+</div>

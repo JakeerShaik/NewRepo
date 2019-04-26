@@ -1,0 +1,37 @@
+<app-header></app-header>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="row">
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+    </div>
+    <div class="col-lg-9">
+        <p> &nbsp;</p>
+        <alert></alert>
+        <div class="row">
+           
+            <div class="col-lg-3 text-center">
+                <a (click)="registerApplicant()" class="hover_mouse"> <img class=" home_icon" src="./assets/images/apply.png"></a>
+                <p>&nbsp;</p>
+                <p class="font-color-brown">Apply For a Loan </p>
+            </div>
+            <!-- <div class="col-md-1"><img class=" home_icon" src="./assets/images/line.png"></div> -->
+            <div class="col-lg-3 text-center">
+                <a [routerLink]="['/existing-loan-app']"> <img class="home_icon" src="./assets/images/existing_loan.png"></a>
+                <p>&nbsp;</p>
+                <p class="font-color-brown">Complete Your Application </p>
+            </div>
+            <!-- <div class="col-md-1"><img class=" home_icon" src="./assets/images/line.png"></div> -->
+
+            <div class="col-lg-3 text-center">
+                <a [routerLink]="['/existing-loan-app']"> <img class="home_icon" src="./assets/images/View all app.png"></a>
+                <p>&nbsp;</p>
+                <p class="font-color-brown">View all applications </p>
+            </div>
+            
+        </div>
+    </div>
+    <!--/row-->
+</div>

@@ -1,0 +1,284 @@
+<app-header></app-header>
+
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10  header-progress-bar">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 header-progress-bar-box"></div>
+        </div>
+        <div class="col-lg-1"></div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center padding_0">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Documents</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Upload Financials</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Company Details</div>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 padding_0" id="sidebar">
+        <img src="./assets/images/sideLeft.png" class="img-responsive side_bar">
+
+
+    </div>
+  <div class="col-lg-9">
+        <p> &nbsp;</p>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8">
+                    <h2 class="title-color">Tell us a bit more about your company</h2>
+                   
+                </div>
+            </div>
+        </div>
+        <p> &nbsp;</p>
+      <form class="form-horizontal" [formGroup]='company_detail'  novalidate>
+    
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <input type="text" formControlName="tradeLicenseNumber" class="floating-input" placeholder=" ">
+                      <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Trade License Number<span class="error-astrix"> *</span></label>
+                      <div *ngIf=" (tradeLicenseNumber.dirty || isSubmitted) && tradeLicenseNumber.invalid">
+                              <div class="error-msg" *ngIf="tradeLicenseNumber.errors.required">Enter Trade License Number</div>
+                              <div class="error-msg" *ngIf="tradeLicenseNumber.errors.minlength">Trade License Number should be minimum {{tradeLicenseNumber.errors.minlength.requiredLength}} character</div>
+                              <div class="error-msg" *ngIf="tradeLicenseNumber.errors.maxlength">Trade License Number should be maximum {{tradeLicenseNumber.errors.maxlength.requiredLength}} character</div>
+                          </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                        <input type="text" [min]="min" [owlDateTimeTrigger]="traddate" [owlDateTime]="traddate"
+                        formControlName="tradeLicenseExpirydate" class="floating-input" readonly placeholder=" ">
+                    <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #traddate></owl-date-time>
+                    
+                      <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Trade License Expiry<span class="error-astrix"> *</span></label>
+                      <div *ngIf=" (tradeLicenseExpirydate.dirty || isSubmitted) && tradeLicenseExpirydate.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="tradeLicenseExpirydate.errors.required">Select date</div>
+                              <div class="error-msg" *ngIf="tradeLicenseExpirydate.errors.minlength">Date should be minimum {{tradeLicenseExpirydate.errors.minlength.requiredLength}} character</div>
+                              <div class="error-msg" *ngIf="tradeLicenseExpirydate.errors.maxlength">Date should be minimum {{tradeLicenseExpirydate.errors.maxlength.requiredLength}} character</div>
+                          </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1 "></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <select formControlName="placeofIssue"  class="floating-select" >
+                            <!-- onclick="this.setAttribute('value', this.value);" -->
+                    <option value="" selected>Select Option</option>
+                        <option *ngFor="let emiratecities of emiratecity" [value]="emiratecities.code">{{emiratecities.name}}</option>
+                        </select>
+                        <span class="highlight"></span>
+                        <label>Place of Issue<span class="error-astrix"> *</span></label>
+                      <div *ngIf="(placeofIssue.dirty || isSubmitted) && placeofIssue.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="placeofIssue.errors.required">Select Option</div>
+                          </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <!-- <input type="text" formControlName="companyRegistrationDate" class="floating-input" placeholder=" "> -->
+                      <input type="text" [max]="max" [owlDateTimeTrigger]="regdate" [owlDateTime]="regdate"
+                      formControlName="companyRegistrationDate" class="floating-input" readonly placeholder=" ">
+                  <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #regdate></owl-date-time>
+                      <span class="highlight"></span>
+                      <label>Registration Date<span class="error-astrix"> *</span></label>
+                      <div *ngIf=" (companyRegistrationDate.dirty || isSubmitted) && companyRegistrationDate.invalid" class=" error-msg">
+                              <div class="error-msg" *ngIf="companyRegistrationDate.errors.required">Enter date</div>
+                              <div class="error-msg" *ngIf="companyRegistrationDate.errors.minlength">Date should be minimum {{companyRegistrationDate.errors.minlength.requiredLength}} character</div>
+                              <div class="error-msg" *ngIf="companyRegistrationDate.errors.maxlength">Date should be maximum {{companyRegistrationDate.errors.maxlength.requiredLength}} character</div>
+                          </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <select formControlName="countryOfDomicile" class="floating-select" >
+                    <option value="" selected>Select Option</option>
+                       
+                        <option *ngFor="let countryLists of country" [value]="countryLists.code2">{{countryLists.name}}</option>
+                        </select>
+                        <span class="highlight"></span>
+                        <label>Country Of Domicile</label>
+                        <div *ngIf="(countryOfDomicile.dirty || isSubmitted) && countryOfDomicile.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="countryOfDomicile.errors.required">Select Country Of Domicile</div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <select formControlName="tob"  class="floating-select" >
+                    <option value="" selected>Select Option</option>
+                       
+                        <option *ngFor="let busi of business" [value]="busi.tobCode">{{busi.tobName}}</option>
+                         
+                        </select>
+                        <span class="highlight"></span>
+                        <label>Type of Business<span class="error-astrix"> *</span></label>
+                        <div *ngIf="(tob.dirty || isSubmitted) && tob.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="tob.errors.required">Type of Business</div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <select formControlName="nob"  class="floating-select" >
+                    <option value="" selected>Select Option</option>
+                      
+                        <option *ngFor="let natures of nature" [value]="natures.natureofBuisnessCode">{{natures.name}}</option>
+                        </select>
+                        <span class="highlight"></span>
+                        <label>Nature of Business<span class="error-astrix"> *</span></label>
+                        <div *ngIf="(nob.dirty || isSubmitted) && nob.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="nob.errors.required">Select Nature of Business</div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <input type="text" formControlName="yearsInBuisness" class="floating-input" placeholder=" ">
+                      <span class="highlight"></span>
+
+                        <label>Years of Business<span class="error-astrix"> *</span></label>
+                      <div *ngIf=" (yearsInBuisness.dirty || isSubmitted) && yearsInBuisness.invalid" class=" error-msg">
+                        <div class="error-msg" *ngIf="yearsInBuisness.errors.required">Enter Years of Business</div>
+                        <div class="error-msg" *ngIf="yearsInBuisness.errors.pattern">Only Number and not less then 3 years</div>
+                        <div class="error-msg" *ngIf="yearsInBuisness.errors.minlength">Years of Business should be minimum {{yearsInBuisness.errors.minlength.requiredLength}} character</div>
+                        <div class="error-msg" *ngIf="yearsInBuisness.errors.maxlength">Years of Business should be maximum {{yearsInBuisness.errors.maxlength.requiredLength}} character</div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <input type="text" formControlName="noOfEmployees" class="floating-input" placeholder=" ">
+                      <span class="highlight"></span>
+            
+                        <label>Number of employees<span class="error-astrix"> *</span></label>
+                      <div *ngIf=" (noOfEmployees.dirty || isSubmitted) && noOfEmployees.invalid" class=" error-msg">
+                        <div class="error-msg" *ngIf="noOfEmployees.errors.required">Enter Number of employees</div>
+                        <div class="error-msg" *ngIf="noOfEmployees.errors.pattern">Only number, not starts with zero</div>
+                        <div class="error-msg" *ngIf="noOfEmployees.errors.minlength">Number of employees should be minimum {{noOfEmployees.errors.minlength.requiredLength}} character</div>
+                        <div class="error-msg" *ngIf="noOfEmployees.errors.maxlength">Number of employees should be maximum {{noOfEmployees.errors.maxlength.requiredLength}} character</div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <input type="hidden" formControlName="applicationId">
+                      <input type="text" formControlName="companyWebSite" class="floating-input" placeholder=" ">
+                      <span class="highlight"></span>
+  
+                        <label>Enter Company Website</label>
+                      <div *ngIf=" (companyWebSite.dirty || isSubmitted) && companyWebSite.invalid" class=" error-msg">
+                        <div class="error-msg" *ngIf="companyWebSite.errors.required">Enter Website</div>
+                        <div class="error-msg" *ngIf="companyWebSite.errors.minlength">Website should be minimum {{companyWebSite.errors.minlength.requiredLength}} character</div>
+                        <div class="error-msg" *ngIf="companyWebSite.errors.maxlength">Website should be maximum {{companyWebSite.errors.maxlength.requiredLength}} character</div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <select formControlName="legalStatus"  class="floating-select">
+                    <option value="" selected>Select Option</option>
+                      
+                        <option value="Resident">Resident</option>
+                       <option value="Non resident">Non resident</option>
+                      </select>
+                      <span class="highlight"></span>
+                      <label>Legal Status<span class="error-astrix"> *</span></label>
+                      <div *ngIf="(legalStatus.dirty || isSubmitted) && legalStatus.invalid" class=" error-msg">
+                        <div class="error-msg" *ngIf="legalStatus.errors.required">Select Legal Status</div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-10">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-9">
+                  <div class="floating-label form-group">
+                      <input type="text" formControlName="parentCompanyApplicable" class="floating-input" placeholder=" ">
+                      <span class="highlight"></span>
+
+                      <label>Parent Company Name (if applicable)</label>
+                      <div *ngIf=" (parentCompanyApplicable.dirty || isSubmitted) && parentCompanyApplicable.invalid" class=" error-msg">
+                       
+                        <div class="error-msg" *ngIf="parentCompanyApplicable.errors.minlength">Parent Company Name should be minimum {{parentCompanyApplicable.errors.minlength.requiredLength}} character</div>
+                        <div class="error-msg" *ngIf="parentCompanyApplicable.errors.maxlength">Parent Company Name should be maximum {{parentCompanyApplicable.errors.maxlength.requiredLength}} character</div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="clear"></div>
+              <p>&nbsp; </p>
+              <div class="col-lg-2 col-md-3 col-sm-3">
+                
+            </div>
+              <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="form-group">
+                      <input type="submit" class="btn btn-default" (click)="comapnyDetail('saveandcont')"  value="Save & Continue">
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="form-group">
+                      <input type="button" class="btn btn-default" (click)="comapnyDetail('saveandexit')"   value="Save & Exit">
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3">
+                 
+              </div>
+             
+
+          </div>
+
+      </form>
+
+  </div>
+
+
+</div>
