@@ -1,0 +1,227 @@
+<div class="row">
+  <div class="scp-breadcrumb shadow-bottom">
+    <ul class="breadcrumb ">
+      <li>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a [routerLink]="['/home']"> Home</a>
+      </li>
+      <li>
+        <a>Job Allocation</a>
+      </li>
+      <li class="active">Re-assign Job</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <!-- <div class="col-lg-12"> -->
+    <!-- <div class="panel panel-default shadow-all filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">List of Allocated Job</h3>
+       
+      </div> -->
+      <div class="panel-body">
+        <ag-grid-angular 
+        style="width: 100%; height: 550px;" 
+        class="ag-theme-balham"
+        [enableSorting]="true"
+        [enableColResize]="true"    
+        [floatingFilter]="true"
+        [rowData]="rowData" 
+        [columnDefs]="columnDefs"
+        [pagination]="true"
+        [paginationPageSize]="14"
+        (rowClicked)="onRowClicked($event)"
+        >
+      </ag-grid-angular>
+      <!-- [rowSelection]="rowSelection" -->
+    <!-- </div>
+    </div> -->
+  <!-- </div> -->
+
+</div>
+</div>
+
+
+
+<!-- Modal 1 Job Detail-->
+<div class="modal fade" id="jobview" tabindex="-1" role="dialog" aria-labelledby="jobview" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Job Details</h4>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="onejobdetail">
+        <p><label> Job ID </label>: {{onejobdetail.job.jobReference}}</p>
+        <p><label> Loan Reference </label>: {{onejobdetail.job.lndmeloanReference}}</p>
+        <p><label> Name </label>: {{onejobdetail.job.jobCustomerName}}</p>
+        <p><label> Email </label>: {{onejobdetail.job.jobCustomerEmail}}</p>
+        <p><label> Contact </label>: {{onejobdetail.job.jobCustomerPhone}}</p>
+        <p><label>Product </label>: {{onejobdetail.job.jobProduct}}</p>
+        <p><label>Job Type Code</label>: {{onejobdetail.job.jobTypeCode}}</p>
+        <p><label>Received Dated </label>: {{onejobdetail.job.jobDateReceived}}</p>
+        <fieldset class="scheduler-border">
+          <legend class="scheduler-border">KYC Schedule</legend>
+        <p>From Date : <label>{{onejobdetail.job.jobAvailableFromDate}}</label></p>
+        <p>To Date : <label>{{onejobdetail.job.jobAvailableToDate}}</label></p>
+        <p>From Time : <label>{{onejobdetail.job.jobAvailableFromTime}}</label></p>
+        <p>To Time : <label>{{onejobdetail.job.jobAvailableToTime}}</label></p>
+      </fieldset>
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Address</legend>
+            <ul>
+              <li>Address 1 : {{onejobdetail.job.jobCustomerAddress1}}</li>
+              <li>Address 2 : {{onejobdetail.job.jobCustomerAddress2}}</li>
+              <li>Address 3 : {{onejobdetail.job.jobCustomerAddress3}}</li>
+              <li>City : {{onejobdetail.job.jobCustomerCity}}</li>
+            </ul>
+        </fieldset>
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Signature</legend>
+           <img class="img-responsive" width="200" height="180"  [src]="signaturepath">
+        </fieldset>
+        </div>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+<!-- Modal 2 Job History-->
+<div class="modal fade" id="jobmap" tabindex="-1" role="dialog" aria-labelledby="jobview" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Job History</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel panel-default shadow-all">
+            <!-- <div class="panel-heading">Allocate job</div> -->
+            <div class="panel-body">
+             
+              <!-- <form > -->
+                  <div class="alert alert-danger text-center" *ngIf="!jobhis || jobhis.length === 0">
+                      <p>No History Found</p>
+                  </div>
+           
+                  <div class="well" *ngFor="let job of jobhis ;let i = index">
+                      <!-- {{job.jobHistoryComments}} -->
+        <p><label>Serial No. </label> : {{i+1}}</p>
+        <p><label>Code </label> : {{job.eventCode}}</p>
+        <p><label>Job Reference </label> : {{job.jobHistoryJobReference}}</p>
+        <p><label>Date </label> : {{job.jobHistoryDate}}</p>
+        <p><label>Time </label> : {{job.jobHistoryTime}}</p>
+        <p><label>Comment </label> : {{job.jobHistoryComments}}</p>
+        
+                   </div>
+               
+             
+              <!-- </form> -->
+      
+            </div>
+      
+      
+          </div>
+
+
+        </div>
+      
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+<!-- Modal 2 Job Mapping-->
+<div class="modal fade" id="jobmap" tabindex="-1" role="dialog" aria-labelledby="jobview" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="from" [formGroup]='joballocation' (ngSubmit)='save()'  novalidate>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Job Reallocation</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel panel-default shadow-all">
+            <!-- <div class="panel-heading">Allocate job</div> -->
+            <div class="panel-body">
+                <div class="alert alert-dismissible" *ngIf="result" [ngClass]="(result=='Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{result}}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+              <!-- <form > -->
+              <div class="form-group">
+                <label>New Agent <span class="error-astrix">*</span></label>
+                <select class="form-control input-sm" formControlName="agentid" id="agentid">
+                  <option value="" >Select New Agent</option>
+                  <option *ngFor="let agents of agent" [value]="agents.agentCode">({{agents.agentCode}}) , {{agents.agentName}}</option>
+         
+                </select>
+                <div *ngIf=" (agentid.dirty || isSubmitted) && agentid.invalid" class=" error-msg">
+                  <span class="error-msg" *ngIf="agentid.errors.required">Select Agent</span> 
+              </div>
+              </div>
+              <div class="form-group">
+                <label>Existing Agent Code<span class="error-astrix"></span></label>
+             
+              <input type="text" class="form-control" formControlName="existingAgentCode" readonly>
+                <div *ngIf=" (isSubmitted) && existingAgentCode.invalid" class=" error-msg">
+                  <span class="error-msg" *ngIf="existingAgentCode.errors.required">Something Went Wrong</span> 
+              </div>
+              </div>
+              <div class="form-group">
+                <label>Existing Agent Name<span class="error-astrix"></span></label>
+             
+              <input type="text" class="form-control" formControlName="newAgentName" readonly>
+               
+              </div>
+                    <div class="form-group">
+                      <label>Job <span class="error-astrix"></span></label>
+                    <input type="text" class="form-control" formControlName="jobid" readonly>
+                    
+                      <div *ngIf=" (isSubmitted) && jobid.invalid" class=" error-msg">
+                        <span class="error-msg" *ngIf="jobid.errors.required">Something Went Wrong</span> 
+                    </div>
+                    </div>
+               
+                <div class="row">
+                  <div class="col-lg-12">
+                    <button class="btn btn-primary btn-block" type="submit" [disabled]="!joballocation.valid">
+                      Allocate to Agent </button>
+                  </div>
+                 
+               
+                </div>
+              <!-- </form> -->
+      
+            </div>
+      
+      
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+

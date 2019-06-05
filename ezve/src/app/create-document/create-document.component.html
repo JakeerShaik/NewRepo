@@ -1,0 +1,143 @@
+<div class="row">
+  <div class="scp-breadcrumb shadow-bottom">
+    <ul class="breadcrumb ">
+      <li>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a [routerLink]="['/home']"> Home</a>
+      </li>
+      <li>
+        <a>Job Definition</a>
+      </li>
+      <li class="active">Create Document</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="panel panel-default shadow-all">
+      <div class="panel-heading">Add Document</div>
+      <div class="panel-body">
+          <div class="alert alert-dismissible" *ngIf="result" [ngClass]="(result=='Collateral Code Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{result}}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          </div>
+        <form class="from" [formGroup]='documentform' (ngSubmit)='save()' novalidate>
+          <div class="form-group">
+            <label>Document Code <span class="error-astrix">*</span></label>
+            <input type="text" class="form-control" formControlName="code" required placeholder="Enter Document Code">
+            <div *ngIf=" (code.dirty || isSubmitted) && code.invalid" class=" error-msg">
+                <div class="error-msg" *ngIf="code.errors.required">Enter Document Code</div>
+                <div class="error-msg" *ngIf="code.errors.minlength">Document Code should be minimum {{code.errors.minlength.requiredLength}} character</div>
+                <div class="error-msg" *ngIf="code.errors.maxlength">Document Code should be maximum {{code.errors.maxlength.requiredLength}} character</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Document Name <span class="error-astrix">*</span></label>
+            <input type="text" class="form-control" formControlName="name" required placeholder="Enter Document Name">
+            <div *ngIf=" (name.dirty || isSubmitted) && name.invalid" class=" error-msg">
+                <div class="error-msg" *ngIf="name.errors.required">Enter Document Name</div>
+                <div class="error-msg" *ngIf="name.errors.minlength">Document Name should be minimum {{name.errors.minlength.requiredLength}} character</div>
+                <div class="error-msg" *ngIf="name.errors.maxlength">Document Name should be maximum {{name.errors.maxlength.requiredLength}} character</div>
+                <div class="error-msg" *ngIf="name.errors.pattern">Alphabets Only</div>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="submit" [disabled]="!documentform.valid">
+                Save <span *ngIf="loading"><i class="fa fa-spinner fa-spin fa-1x"></i></span></button>
+            </div>
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="reset">
+                Reset</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="col-lg-8">
+    <div class="panel panel-default shadow-all filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">Document</h3>
+       
+      </div>
+      <div class="panel-body">
+        <ag-grid-angular 
+        style="width: 100%; height: 550px;" 
+        class="ag-theme-balham"
+        [enableSorting]="true"
+        [enableColResize]="true"    
+        [floatingFilter]="true"
+        [rowData]="rowData" 
+        [columnDefs]="columnDefs"
+        [pagination]="true"
+        [paginationPageSize]="14"
+        (rowClicked)="onRowClicked($event)"
+        [overlayLoadingTemplate]="overlayLoadingTemplate"
+        [overlayNoRowsTemplate]="overlayNoRowsTemplate"
+        
+        >
+      </ag-grid-angular>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       
+      <form class="form" [formGroup]='editdoc' (ngSubmit)="updateDoc()">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Update Document Details</h4>
+          <div class="alert alert-dismissible" *ngIf="editresult" [ngClass]="(editresult=='Collateral Code Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{editresult}}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          </div>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group">
+            <label>Document Code <span class="error-astrix">*</span></label>
+            <input class="form-control" type="text" placeholder="Code" formControlName="docCode" required readonly>
+            <div *ngIf=" (docCode.dirty || docCode.pristine || isSubmitted) && docCode.invalid" class=" error-msg">
+                <div class="error-msg" *ngIf="docCode.errors.required">Enter Document Code</div>
+                <div class="error-msg" *ngIf="docCode.errors.minlength">Document Code should be minimum {{docCode.errors.minlength.requiredLength}} character</div>
+                <div class="error-msg" *ngIf="docCode.errors.maxlength">Document Code should be maximum {{docCode.errors.maxlength.requiredLength}} character</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Document Name <span class="error-astrix">*</span></label>
+              <input class="form-control " type="text" placeholder="Name" formControlName="docName" required>
+              <div *ngIf=" (docName.dirty || docName.pristine || isSubmitted) && docName.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="docName.errors.required">Enter Document Name</div>
+                  <div class="error-msg" *ngIf="docName.errors.minlength">Document Name should be minimum {{docName.errors.minlength.requiredLength}} character</div>
+                  <div class="error-msg" *ngIf="docName.errors.maxlength">Document Name should be maximum {{docName.errors.maxlength.requiredLength}} character</div>
+                <div class="error-msg" *ngIf="docName.errors.pattern">Alphabets Only</div>
+                  
+
+              </div>
+          </div>
+
+        </div>
+        <div class="modal-footer ">
+          <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;" [disabled]="!editdoc.valid">
+            <span class="glyphicon glyphicon-ok-sign"></span> Update <span *ngIf="editloading"><i class="fa fa-spinner fa-spin fa-1x"></i></span></button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

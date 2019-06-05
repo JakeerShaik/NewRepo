@@ -1,0 +1,69 @@
+
+   <div class="row"  >
+        <nav class="navbar navbar-default sidebar side-height" role="navigation" >
+            <!-- *ngIf="loggedin" -->
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">Menu</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li ><a [routerLink]="['/home']" >Dashboard <i class="fa fa-dashboard pull-right" style="font-size:18px"></i></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Job Definition <span class="caret"></span><i class="fa fa-database pull-right" style="font-size:18px"></i></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a [routerLink]="['/job-type']">Create Job Type</a></li>
+                                <li><a [routerLink]="['/create-collateral']">Create Collateral</a></li>
+                                <li><a [routerLink]="['/create-document']">Create Document</a></li>
+                                <li><a [routerLink]="['/job-col-map']">Job Collateral Mapping</a></li>
+                                <li><a [routerLink]="['/job-doc-map']">Job Document Mapping</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Job Allocation <span class="caret"></span><i class="fa fa-share-square pull-right" style="font-size:18px;"></i></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a [routerLink]="['/job-allocation']">Allocate job To Agent</a></li>
+                                <li><a [routerLink]="['/job-reallocation']">Job Reallocation</a></li>
+                                <li><a [routerLink]="['/job-reassign']">Job Re-assign</a></li>
+                                <li><a [routerLink]="['/outstanding-job']">Outstanding Job</a></li>
+                                <li><a [routerLink]="['/completed-job']">Completed Job</a></li>
+                                <li><a [routerLink]="['/pending-job']">Pending Job</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Job Management <span class="caret"></span><i class="fa fa-address-book pull-right" style="font-size:18px"></i></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="#">Action</a></li>
+                            </ul>
+                        </li> -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Agent Maintenance <span class="caret"></span><i class="fa fa-user-plus pull-right" style="font-size:18px"></i></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a [routerLink]="['/agent']">Add Agent</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Management <span class="caret"></span><i class="fa fa-users pull-right" style="font-size:18px"></i></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a [routerLink]="['/user']">Add User</a></li>
+                           
+                            </ul>
+                        </li> -->
+                      
+
+                        <li ><a (click)="userLogOut()" style="cursor: pointer">Logout<i class="fa fa-sign-out pull-right" style="font-size:18px"></i></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+    </div>

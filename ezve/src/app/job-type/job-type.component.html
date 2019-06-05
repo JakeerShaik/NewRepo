@@ -1,0 +1,142 @@
+<div class="row">
+  <div class="scp-breadcrumb shadow-bottom">
+    <ul class="breadcrumb ">
+      <li>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a [routerLink]="['/home']"> Home</a>
+      </li>
+      <li>
+        <a>Job Definition</a>
+      </li>
+      <li class="active">Job Type</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="panel panel-default shadow-all">
+      <div class="panel-heading">Create Job Type</div>
+      <div class="alert alert-dismissible" *ngIf="result" [ngClass]="(result=='Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{result}}
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
+      <div class="panel-body">
+        <form class="from" [formGroup]='jobtypeform' (ngSubmit)='save()' novalidate>
+            <div class="form-group">
+                <label>Job Name <span class="error-astrix">*</span></label>
+                <!-- <select class="form-control input-sm" formControlName="name" >
+                  <option value="" selected>Select Job Type Name</option>
+             <option *ngFor="let jobtypenames of jobTypeNameData" [value]="jobtypenames">{{jobtypenames}}</option>
+
+                </select> -->
+                <input type="text" class="form-control input-sm" formControlName="name" placeholder="Enter Job Type Name">
+                <div *ngIf=" (name.dirty || isSubmitted) && name.invalid" class="error-msg">
+                  <div class="error-msg" *ngIf="name.errors.required">Enter Job Type Name</div>
+                  <div class="error-msg" *ngIf="name.errors.minlength">Job Name should be minimum {{name.errors.minlength.requiredLength}} character</div>
+                  <div class="error-msg" *ngIf="name.errors.maxlength">Job Name should be maximum {{name.errors.maxlength.requiredLength}} character</div>
+                </div>
+              </div>
+          <div class="form-group">
+            <label>Job Code <span class="error-astrix">*</span></label>
+            <input type="text" class="form-control input-sm" formControlName="code" placeholder="Job Code">
+            <div *ngIf=" (code.dirty || isSubmitted) && code.invalid" class=" error-msg">
+              <div class="error-msg" *ngIf="code.errors.required">Enter Job Code</div>
+              <div class="error-msg" *ngIf="code.errors.minlength">Job Code should be minimum {{code.errors.minlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="code.errors.maxlength">Job Code should be maximum {{code.errors.maxlength.requiredLength}} character</div>
+            </div>
+          </div>
+          <!-- <div class="form-group">
+            <label>Job SLA <span class="error-astrix">*</span></label>
+            <input type="text" class="form-control input-sm text-uppercase" formControlName="sla" placeholder="Enter SLA">
+            <div *ngIf=" (sla.dirty || isSubmitted) && sla.invalid" class="error-msg">
+              <div class="error-msg" *ngIf="sla.errors.required">Enter SLA</div>
+              <div class="error-msg" *ngIf="sla.errors.minlength">SLA should be minimum {{sla.errors.minlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="sla.errors.maxlength">SLA should be maximum {{sla.errors.maxlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="sla.errors.pattern">Only Number</div>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="submit" [disabled]="!jobtypeform.valid">
+                Create</button>
+            </div>
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="reset">
+                Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="panel panel-default shadow-all">
+      <div class="panel-heading">
+        <h3 class="panel-title">List of Job Type</h3>
+      </div>
+      <div class="panel-body">
+
+        <ag-grid-angular style="width: auto; height: 550px;" class="ag-theme-balham"
+         [enableSorting]="true"
+         [floatingFilter]="true"
+          [rowData]="rowData" 
+          [columnDefs]="columnDefs" 
+          [pagination]="true"
+          [paginationPageSize]="14"
+           (rowClicked)="onRowClicked($event)">
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]='editjobtypeform' (ngSubmit)='edit()' novalidate>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Update Job Type</h4>
+          <div class="alert alert-dismissible" *ngIf="editresult" [ngClass]="(editresult=='Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{editresult}}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          </div>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label>Job Type Code <span class="error-astrix">*</span></label>
+            <input class="form-control " type="text" placeholder="Job Type Code" formControlName="editcode" required readonly>
+
+          </div>
+          <div class="form-group">
+            <label>Job Type Name <span class="error-astrix">*</span></label>
+              <input class="form-control " type="text" placeholder="Job Type Name" formControlName="editname" required readonly>
+            
+          </div>
+          <!-- <div class="form-group">
+              <label>Job Type SLA <span class="error-astrix">*</span></label>
+                <input class="form-control " type="text" placeholder="SLA" formControlName="editsla" required >
+               <div *ngIf=" (editsla.dirty || isSubmitted || editsla.pristine) && editsla.invalid" class="error-msg">
+              <div class="error-msg" *ngIf="editsla.errors.required">Enter SLA</div>
+              <div class="error-msg" *ngIf="editsla.errors.minlength">SLA should be minimum {{editsla.errors.minlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="editsla.errors.maxlength">SLA should be maximum {{editsla.errors.maxlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="editsla.errors.patttern">Only Number</div>
+            </div>
+            </div> -->
+
+        </div>
+        <div class="modal-footer ">
+          <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;" [disabled]="!editjobtypeform.valid">
+            <span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

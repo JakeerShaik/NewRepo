@@ -1,0 +1,21 @@
+<div class="container-fluid bg">
+        <app-loader></app-loader>
+
+    <div class="row">
+        <app-header></app-header>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2" style="min-height:100% !important;
+        position:relative;" *ngIf="userLogged()"  >
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-lg-10 bootom_40 col-md-10 col-sm-10">
+    <router-outlet></router-outlet>
+</div>
+</div>
+<div class="row">
+ <footer>
+    <app-footer></app-footer>
+ </footer>
+</div>
+</div>

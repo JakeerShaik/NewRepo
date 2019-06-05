@@ -1,0 +1,140 @@
+<div class="row">
+  <div class="scp-breadcrumb shadow-bottom">
+    <ul class="breadcrumb ">
+      <li>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a [routerLink]="['/home']"> Home</a>
+      </li>
+      <li>
+        <a>Job Definition</a>
+      </li>
+      <li class="active">Create Collateral</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="panel panel-default shadow-all">
+      <div class="panel-heading">Add Collateral</div>
+      <div class="panel-body">
+          <div class="alert alert-dismissible" *ngIf="result" [ngClass]="(result=='Collateral Code Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{result}}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          </div>
+        <form class="from" [formGroup]='collform' (ngSubmit)='save()' novalidate>
+          <div class="form-group">
+            <label>Collateral Code <span class="error-astrix">*</span></label>
+            <input type="text" class="form-control" formControlName="code" required placeholder="Enter Code">
+            <div *ngIf=" (code.dirty || isSubmitted) && code.invalid" class=" error-msg">
+              <div class="error-msg" *ngIf="code.errors.required">Enter Collateral Code</div>
+              <div class="error-msg" *ngIf="code.errors.minlength">Collateral Code should be minimum {{code.errors.minlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="code.errors.maxlength">Collateral Code should be maximum {{code.errors.maxlength.requiredLength}} character</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Collateral Name <span class="error-astrix">*</span></label>
+            <input type="text" class="form-control" formControlName="name" required placeholder="Enter Name">
+            <div *ngIf=" (name.dirty || isSubmitted) && name.invalid" class=" error-msg">
+              <div class="error-msg" *ngIf="name.errors.required">Enter Collateral Name</div>
+              <div class="error-msg" *ngIf="name.errors.minlength">Collateral Name should be minimum {{name.errors.minlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="name.errors.maxlength">Collateral Name should be maximum {{name.errors.maxlength.requiredLength}} character</div>
+              <div class="error-msg" *ngIf="name.errors.pattern">Alphabets Only</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="submit" [disabled]="!collform.valid">
+                Save <span *ngIf="loading"><i class="fa fa-spinner fa-spin fa-1x"></i></span></button>
+            </div>
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="reset">
+
+                Reset</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="col-lg-8">
+    <div class="panel panel-default shadow-all filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">Collateral</h3>
+      </div>
+      <div class="panel-body">
+        <ag-grid-angular style="width: 100%; height: 550px;" class="ag-theme-balham"
+         [enableSorting]="true"
+         [enableColResize]="true"      
+           [floatingFilter]="true"
+          [rowData]="rowData" 
+          [columnDefs]="columnDefs" 
+          [pagination]="true" 
+          [paginationPageSize]="14"
+           (rowClicked)="onRowClicked($event)"
+           [overlayLoadingTemplate]="overlayLoadingTemplate"
+           [overlayNoRowsTemplate]="overlayNoRowsTemplate"
+        
+         
+           >
+        </ag-grid-angular>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       
+      <form class="form" [formGroup]='editcoll' (ngSubmit)="updateCol()">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Update Collateral Details</h4>
+          <div class="alert alert-dismissible" *ngIf="editresult" [ngClass]="(editresult=='Collateral Code Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{editresult}}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          </div>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group">
+            <label>Collateral Code <span class="error-astrix">*</span></label>
+            <input class="form-control" type="text" placeholder="Code" formControlName="collcode" required readonly>
+            <div *ngIf=" (collcode.dirty || collcode.pristine || isSubmitted) && collcode.invalid" class=" error-msg">
+                <div class="error-msg" *ngIf="collcode.errors.required">Enter Collateral Code</div>
+                <div class="error-msg" *ngIf="collcode.errors.minlength">Collateral Code should be minimum {{collcode.errors.minlength.requiredLength}} character</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Collateral Name <span class="error-astrix">*</span></label>
+              <input class="form-control " type="text" placeholder="Name" formControlName="collName" required>
+              <div *ngIf=" (collName.dirty || collName.pristine || isSubmitted) && collName.invalid" class=" error-msg">
+                  <div class="error-msg" *ngIf="collName.errors.required">Enter Collateral Name</div>
+                  <div class="error-msg" *ngIf="collName.errors.minlength">Collateral Name should be minimum {{collName.errors.minlength.requiredLength}} character</div>
+                  <div class="error-msg" *ngIf="collName.errors.maxlength">Collateral Name should be maximum {{collName.errors.maxlength.requiredLength}} character</div>
+                  <div class="error-msg" *ngIf="collName.errors.pattern">Alphabets Only</div>
+  
+              </div>
+          </div>
+
+        </div>
+        <div class="modal-footer ">
+          <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;" [disabled]="!editcoll.valid">
+            <span class="glyphicon glyphicon-ok-sign"></span> Update <span *ngIf="editloading"><i class="fa fa-spinner fa-spin fa-1x"></i></span></button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

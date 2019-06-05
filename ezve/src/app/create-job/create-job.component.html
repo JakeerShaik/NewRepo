@@ -1,0 +1,251 @@
+<div class="row">
+  <div class="scp-breadcrumb shadow-bottom">
+    <ul class="breadcrumb ">
+      <li>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a [routerLink]="['/home']"> Home</a>
+      </li>
+      <li>
+        <a>Job Definition</a>
+      </li>
+      <li class="active">Create Job</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="panel panel-default shadow-all">
+      <div class="panel-heading">Create job</div>
+      <div class="panel-body">
+        <form class="from" >
+          <div class="form-group">
+            <label>Customer Name</label>
+            <select class="form-control input-sm">
+              <option>Select Customer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Product</label>
+            <select class="form-control input-sm">
+              <option>Select Product</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Reference</label>
+          <input type="text" class="form-control input-sm" disabled placeholder="Reference Number">
+          </div>
+          <div class="form-group">
+            <label>Collateral</label>
+            <ng-multiselect-dropdown 
+            [name]="'collateral'"
+            [placeholder]="'Select Collateral'"
+            [data]="collateral"
+            [(ngModel)]="selectedItemscol"
+            [settings]="dropdownSettings"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+          </div>
+          <div class="form-group">
+            <label>Handing Over</label>
+            <ng-multiselect-dropdown 
+            [name]="'document'"
+            [placeholder]="'Select  Option'"
+            [data]="document"
+           
+            [(ngModel)]="selectedItemsdoc"
+            [settings]="dropdownSettings"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+           <textarea class="form-control" placeholder="Enter Message"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="submit">
+                Create</button>
+            </div>
+            <div class="col-lg-6">
+              <button class="btn btn-primary btn-block" type="reset">
+                Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="panel panel-default shadow-all filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">List of Job</h3>
+        <div class="pull-right">
+          <button class="btn btn-default btn-xs btn-filter">
+            <span class="glyphicon glyphicon-filter"></span> Filter</button>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr class="filters">
+            <th>
+              <input type="text" class="form-control" placeholder="#" disabled>
+            </th>
+            <th>
+              <input type="text" class="form-control" placeholder="Job Id" disabled>
+            </th>
+            <th>
+              <input type="text" class="form-control" placeholder="Customer Name" disabled>
+            </th>
+            <th>
+              <input type="text" class="form-control" placeholder="View" disabled>
+            </th>
+            <th>
+              <input type="text" class="form-control" placeholder="Edit" disabled>
+            </th>
+            <th>
+              <input type="text" class="form-control" placeholder="Delete" disabled>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Passport</td>
+            <td>Description Goes here</td>
+            <td>
+              <input type="button" class="btn btn-success input-sm" value="View" data-toggle="modal" data-target="#view">
+            </td>
+            <td>
+              <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+            </td>
+            <td>
+              <input type="button" class="btn btn-danger input-sm" value="Delete">
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Bank Passbook</td>
+            <td>Description Goes here</td>
+            <td>
+              <input type="button" class="btn btn-success input-sm" value="View" data-toggle="modal" data-target="#view">
+            </td>
+            <td>
+              <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+            </td>
+            <td>
+              <input type="button" class="btn btn-danger input-sm" value="Delete">
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Pan Card</td>
+            <td>Description Goes here</td>
+            <td>
+              <input type="button" class="btn btn-success input-sm" value="View" data-toggle="modal" data-target="#view">
+            </td>
+            <td>
+              <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+            </td>
+            <td>
+              <input type="button" class="btn btn-danger input-sm" value="Delete">
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Voter Id Card</td>
+            <td>Description Goes here</td>
+            <td>
+              <input type="button" class="btn btn-success input-sm" value="View" data-toggle="modal" data-target="#view">
+            </td>
+            <td>
+              <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+            </td>
+            <td>
+              <input type="button" class="btn btn-danger input-sm" value="Delete">
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Residential Proof</td>
+            <td>Description Goes here</td>
+            <td>
+              <input type="button" class="btn btn-success input-sm" value="View" data-toggle="modal" data-target="#view">
+            </td>
+            <td>
+              <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+            </td>
+            <td>
+              <input type="button" class="btn btn-danger input-sm" value="Delete">
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form name="edit">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Update Collateral Details</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <input class="form-control " type="text" placeholder="Name" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" placeholder="Description" required></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-warning btn-lg" style="width: 100%;">
+            <span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+
+<!-- Modal 2-->
+<div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="view" aria-hidden="true" data-backdrop="static"
+  data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form name="edit">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align" id="Heading">Job Details</h4>
+        </div>
+        <div class="modal-body">
+
+        <p>Details Goes here</p>
+
+        </div>
+     
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

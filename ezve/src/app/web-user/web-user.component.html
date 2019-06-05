@@ -1,0 +1,211 @@
+<div class="row">
+    <div class="scp-breadcrumb shadow-bottom">
+        <ul class="breadcrumb ">
+            <li>
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <a [routerLink]="['/home']"> Home</a>
+            </li>
+            <li>
+                <a>User Managment</a>
+            </li>
+            <li class="active">Create User</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-default shadow-all">
+            <div class="panel-heading">Add User</div>
+            <div class="panel-body">
+                <form [formGroup]='user' (ngSubmit)='save()' novalidate>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control input-sm" required placeholder="Enter Name" formControlName="name" id="name">
+                        <div *ngIf=" (name.dirty || isSubmitted) && name.invalid" class=" error-msg">
+                            <span class="error-msg" *ngIf="name.errors.required">Enter Name</span>
+                            <span class="error-msg" *ngIf="name.errors.minlength">Name should be minimum {{name.errors.minlength.requiredLength}} character</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control input-sm" id="username" formControlName="username" placeholder="Enter Username">
+                        <div *ngIf=" (username.dirty || isSubmitted) && username.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="username.errors.required">Enter Username</div>
+                            <div class="error-msg" *ngIf="username.errors.minlength">Username should be minimum {{username.errors.minlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control input-sm" placeholder="Enter Password"
+                         formControlName="password">
+                        <div *ngIf=" (password.dirty || isSubmitted) && password.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="password.errors.required">Enter Password</div>
+                            <div class="error-msg" *ngIf="password.errors.minlength">Password should be minimum {{password.errors.minlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control input-sm" placeholder="Enter Same Password" formControlName="cpassword">
+                        <div *ngIf=" (cpassword.dirty || isSubmitted) && cpassword.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="cpassword.errors.required">Enter Confirm Password</div>
+                            <div class="error-msg" *ngIf="cpassword.errors.minlength">Confirm Password should be minimum {{cpassword.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="cpassword.errors.passwordMatchValidator">Password Mismatch</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>User Type</label>
+                        <select class="form-control input-sm" formControlName="usertype" id="usertype">
+                          <option value="">Select User Type</option>
+                          <option value="1">Admin</option>
+                          <option value="2">User</option>
+                          <option value="3">Agent</option>
+                        </select>
+                        <div *ngIf=" (usertype.dirty || isSubmitted) && usertype.invalid" class=" error-msg">
+                          <span class="error-msg" *ngIf="usertype.errors.required">Select User Type</span> 
+                      </div>
+                      </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <button class="btn btn-primary btn-block" type="submit">
+                                Add User</button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <button class="btn btn-primary btn-block" type="reset">
+                                Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-8">
+        <div class="panel panel-default shadow-all filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">User List</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter">
+                        <span class="glyphicon glyphicon-filter"></span> Filter</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th>
+                            <input type="text" class="form-control" placeholder="#" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Name" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Username" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Edit" disabled>
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Delete" disabled>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John Smith</td>
+                        <td>smith@gmail.com</td>
+                        <td>
+                            <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-danger input-sm" (click)="clickMethod('name')" value="Delete">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>jane@yahoo.com</td>
+                        <td>
+                            <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-danger input-sm" (click)="clickMethod('name')" value="Delete">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Pan Card</td>
+                        <td>Description Goes here</td>
+                        <td>
+                            <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-danger input-sm" (click)="clickMethod('name')" value="Delete">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Voter Id Card</td>
+                        <td>Description Goes here</td>
+                        <td>
+                            <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-danger input-sm" (click)="clickMethod('name')" value="Delete">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Residential Proof</td>
+                        <td>Description Goes here</td>
+                        <td>
+                            <input type="button" class="btn btn-primary input-sm" value="Edit" data-toggle="modal" data-target="#edit">
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-danger input-sm" (click)="clickMethod('name')" value="Delete">
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="edit">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <h4 class="modal-title custom_align" id="Heading">Update User Details</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input class="form-control " type="text" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;">
+                        <span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

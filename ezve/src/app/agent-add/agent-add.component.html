@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="scp-breadcrumb shadow-bottom">
+        <ul class="breadcrumb " style="background-color:#F3F3F3;">
+            <li>
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <a [routerLink]="['/home']"> Home</a>
+            </li>
+            <li>
+                <a>Agent Maintenance</a>
+            </li>
+            <li class="active">Add Agent</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-default shadow-all">
+            <div class="panel-heading">Add Agent</div>
+            <div class="panel-body">
+                    <div class="alert alert-dismissible" *ngIf="result" [ngClass]="(result=='Agent Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{result}}
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        </div>
+                <form class="from" [formGroup]='agent' (ngSubmit)='save()' novalidate>
+                    <div class="form-group">
+                        <label>Agent Code <span class="error-astrix">*</span></label>
+                        <input type="text" class="form-control"  formControlName="code"  required placeholder="Enter Agent Code">
+                        <div *ngIf=" (code.dirty || isSubmitted) && code.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="code.errors.required">Enter Agent Code</div>
+                            <div class="error-msg" *ngIf="code.errors.minlength">Agent Code should be minimum {{code.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="code.errors.maxlength">Agent Code should be maximum {{code.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Agent Name <span class="error-astrix">*</span></label>
+                        <input type="text" class="form-control"  formControlName="name" required placeholder="Enter Name">
+                        <div *ngIf=" (name.dirty || isSubmitted) && name.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="name.errors.required">Enter Name</div>
+                            <div class="error-msg" *ngIf="name.errors.minlength">Name should be minimum {{name.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="name.errors.maxlength">Name should be maximum {{name.errors.maxlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="name.errors.pattern">Only Alphabets</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Agent Email <span class="error-astrix">*</span></label>
+                        <input type="email" class="form-control" formControlName="email" required placeholder="Enter Email">
+                        <div *ngIf=" (email.dirty || isSubmitted) && email.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="email.errors.required">Enter Email</div>
+                            <div class="error-msg" *ngIf="email.errors.pattern">Enter valid Email</div>
+                            <div class="error-msg" *ngIf="email.errors.minlength">Email should be minimum {{email.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="email.errors.maxlength">Email should be maximum {{email.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Agent Mobile <span class="error-astrix">*</span></label>
+                        <input type="text" class="form-control" formControlName="mobile" required placeholder="Enter Contact">
+                        <div *ngIf=" (mobile.dirty || isSubmitted) && mobile.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="mobile.errors.required">Enter Mobile Number</div>
+                            <div class="error-msg" *ngIf="mobile.errors.minlength">Mobile number should be  {{mobile.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="mobile.errors.maxlength">Mobile Number should be {{mobile.errors.maxlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="mobile.errors.pattern">Number Only and start with zero</div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" required placeholder="Enter Username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" required placeholder="Enter Password">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" required placeholder="Enter Same Password">
+                    </div> -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="submit" [disabled]="!agent.valid" >
+                                Save </button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="reset" (click)="reset()">
+                                Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-8 ">
+        <div class="panel panel-default  filterable shadow-all">
+            <div class="panel-heading">
+                <h3 class="panel-title">Agents</h3>
+                
+            </div>
+            <div class="panel-body">
+                    <ag-grid-angular  
+                    style="width: 100%; height: 550px;"
+                    class="ag-theme-balham"
+                    [enableSorting]="true"
+                    [floatingFilter]="true"
+                    [rowData]="rowData" 
+                    [columnDefs]="columnDefs"  
+                    [pagination]="true"
+                    [paginationPageSize]="14"
+                    (rowClicked)="onRowClicked($event)"
+                    [enableColResize]="true"
+
+                    >
+                  </ag-grid-angular>
+                  </div>
+        </div>
+    </div>
+ 
+</div>
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+               
+            <form class="form"  [formGroup]='editAgent' (ngSubmit)="editAgentSave()" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <h4 class="modal-title custom_align" id="Heading">Update Agent Details</h4>
+                    <div class="alert alert-dismissible" *ngIf="editresult" [ngClass]="(result=='Agent Already Exists')?'alert-danger':'alert-success'" style="text-align:center">{{editresult}}
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Agent Code <span class="error-astrix">*</span></label>
+                    <input type="text" readonly class="form-control" placeholder="Agent Code" formControlName="agentCode" required >
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>Agent Name <span class="error-astrix">*</span></label>
+                        <input class="form-control " type="text" placeholder="Name"  formControlName="agentName"  required >
+                        
+                        <div *ngIf=" (agentName.dirty || agentName.pristine || isSubmitted) && agentName.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="agentName.errors.required">Enter Agent Name</div>
+                            <div class="error-msg" *ngIf="agentName.errors.minlength">Agent Name should be minimum {{agentName.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="agentName.errors.pattern">Only Alphabets</div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                    <label>Email <span class="error-astrix">*</span></label>
+                        <input class="form-control " type="text" placeholder="Email" formControlName="agentEmail"  required>
+                        <div *ngIf=" (agentEmail.dirty ||agentEmail.touched || agentEmail.pristine || isSubmitted) && agentEmail.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="agentEmail.errors.required">Enter Agent Email</div>
+                            <div class="error-msg" *ngIf="agentEmail.errors.pattern">Enter valid Email</div>
+                            <div class="error-msg" *ngIf="agentEmail.errors.minlength">Agent Email should be minimum {{agentEmail.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="agentEmail.errors.maxlength">Agent Email should be maximum {{agentEmail.errors.maxlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number <span class="error-astrix">*</span></label>
+                        <input class="form-control " type="text" placeholder="Mobile" formControlName="agentMobile" required>
+                        <div *ngIf=" (agentMobile.dirty || agentMobile.touched || agentMobile.pristine || isSubmitted) && agentMobile.invalid" class=" error-msg">
+                            <div class="error-msg" *ngIf="agentMobile.errors.required">Enter Agent Mobile</div>
+                            <div class="error-msg" *ngIf="agentMobile.errors.minlength">Agent Mobile should be minimum {{agentMobile.errors.minlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="agentMobile.errors.maxlength">Mobile Number should be Maximum {{agentMobile.errors.maxlength.requiredLength}} character</div>
+                            <div class="error-msg" *ngIf="agentMobile.errors.pattern">Number Only </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;" [disabled]="!editAgent.valid" >
+                        <span class="glyphicon glyphicon-ok-sign"></span> Update </button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
